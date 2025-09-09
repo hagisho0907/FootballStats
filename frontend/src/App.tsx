@@ -749,43 +749,12 @@ const SupportPage = () => (
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
-  // SVG icons converted from provided PNG icons
-  const IconSVGs = {
-    home: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-      </svg>
-    ),
-    calendar: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-      </svg>
-    ),
-    stats: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
-      </svg>
-    ),
-    aiBuddy: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4v3c0 .55.45 1 1 1h.5c.28 0 .5-.22.5-.5 0-.16-.08-.28-.2-.36L6.5 18H20c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-      </svg>
-    ),
-    support: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" transform="scale(0.8) translate(3, 3)"/>
-      </svg>
-    )
-  };
-
   const navigation = [
-    { id: 'calendar', label: 'カレンダー', icon: IconSVGs.calendar },
-    { id: 'stats', label: 'スタッツ', icon: IconSVGs.stats },
-    { id: 'home', label: 'ホーム', icon: IconSVGs.home },
-    { id: 'ai-buddy', label: 'AIバディ', icon: IconSVGs.aiBuddy },
-    { id: 'support', label: 'サポート', icon: IconSVGs.support }
+    { id: 'calendar', label: 'カレンダー', iconPath: '/icon3.svg' },
+    { id: 'stats', label: 'スタッツ', iconPath: '/icon2.svg' },
+    { id: 'home', label: 'ホーム', iconPath: '/icon1.svg' },
+    { id: 'ai-buddy', label: 'AIバディ', iconPath: '/icon4.svg' },
+    { id: 'support', label: 'サポート', iconPath: '/icon5.svg' }
   ];
 
   const renderPage = () => {
@@ -876,7 +845,17 @@ function App() {
                 transition: 'all 0.2s ease'
               }}
             >
-              <div style={{ fontSize: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{item.icon}</div>
+              <img 
+                src={item.iconPath} 
+                alt={item.label}
+                width="20" 
+                height="20" 
+                style={{ 
+                  filter: currentPage === item.id 
+                    ? 'invert(1) brightness(2)' // White for selected
+                    : 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)', // #3C8DBC for unselected
+                }}
+              />
               {item.label}
             </button>
           ))}
