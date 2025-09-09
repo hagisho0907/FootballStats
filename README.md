@@ -36,50 +36,90 @@
 ### 5. サポート画面
 - 開発中としておいてほしい
 
-## 技術構成
-### フロントエンド
-- **React + TypeScript + Vite** - 高速開発とホットリロード
-- **Tailwind CSS** - レスポンシブデザイン
-- **Zustand** - 軽量状態管理
-- **React Router** - SPAナビゲーション
-- **Framer Motion** - スムーズなページ遷移アニメーション
-- **React Hook Form** - フォーム操作最適化
-- **React Query** - データ取得の最適化
+## 現在の技術構成・プロジェクト構成
 
-### PWA (Progressive Web App) 対応
-- **manifest.json** - アプリライクな動作
-- **Service Worker** - オフライン対応
-- **ホーム画面追加** - ネイティブアプリ風起動
+### 実装済み技術スタック
+#### フロントエンド
+- **React 19.1.1 + TypeScript + Vite 7.1.2** - 高速開発環境
+- **インラインスタイル** - ダークテーマ統一デザイン
+- **useState** - シンプル状態管理（内部ナビゲーション）
+- **PWA対応** - manifest.json設定済み
 
-### ネイティブ風UI実装
-- **固定フッターナビ** - `position: fixed` + `bottom: 0`
-- **スマホ画面最適化** - viewport設定 + レスポンシブ
-- **タッチ操作対応** - タップ、スワイプ操作
-- **スクロール制御** - 各画面1ページ収まり設計
-```css
-/* フッター固定 */
-.footer-nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 70px;
-}
+#### UI/UX
+- **ダークテーマ** - image2.png準拠のダークモード実装
+- **固定ヘッダー・フッター** - モバイルアプリ風ナビゲーション
+- **レスポンシブデザイン** - スマホファースト設計
+- **モックデータ** - 各画面の機能プロトタイプ完成
 
-/* コンテンツ領域調整 */
-.main-content {
-  padding-bottom: 70px;
-  height: calc(100vh - 70px);
-  overflow-y: auto;
-}
+#### デプロイ・CI/CD
+- **GitHub** - ソースコード管理
+- **Vercel** - 自動デプロイ設定済み
+- **本番URL**: https://football-stats-sigma.vercel.app/
+
+### プロジェクト構造
+```
+FootballStats/
+├── frontend/                      # React アプリケーション
+│   ├── public/
+│   │   ├── manifest.json          # PWA設定
+│   │   └── vite.svg
+│   ├── src/
+│   │   ├── App.tsx               # メインアプリ（全5画面実装済み）
+│   │   ├── main.tsx              # エントリーポイント
+│   │   └── index.css             # 基本スタイル
+│   ├── dist/                     # ビルド成果物
+│   ├── package.json              # 依存関係管理
+│   ├── tsconfig.json             # TypeScript設定
+│   ├── vite.config.ts            # Vite設定
+│   └── eslint.config.js          # Linter設定
+├── Images/                       # デザイン参考画像
+│   ├── image1.png - image6.png
+├── README.md                     # プロジェクト仕様書
+└── .git/                        # バージョン管理
 ```
 
-### デプロイ
-- **Vercel** または **Netlify** - 簡単デプロイ
+### 実装済み機能
+#### 1. ホーム画面
+- 選手プロフィール表示（田中太郎/FC Club Forward）
+- 基本統計（25試合、1920分、16ゴール、7.20評価）
+- タブナビゲーション（Attack/Defense/Passing/Physical）
+- 詳細スタッツ表示（Shots: 48、Shots on Target: 23、etc.）
 
-### 将来のアプリ化への対応
-- React → React Native移行を想定した構成
-- コード再利用率70-80%（ビジネスロジック、状態管理、型定義）
-- 必要に応じてExpo採用でWeb/iOS/Android同一コードベース化
+#### 2. カレンダー画面
+- タブナビゲーション（カレンダー/サッカーノート）
+- 月表示カレンダー（2025年9月）
+- 新しいノート追加ボタン
+- フローティングアクションボタン
+
+#### 3. スタッツ画面
+- 試合パネル表示（vs TOKYO UNITED、vs 浅草FC、vs FC東京）
+- 動画・スタッツセクション
+- ページネーションドット表示
+
+#### 4. AIバディ画面
+- 4つのAIエージェント選択
+  - プレーハイライト
+  - チーム戦術
+  - スタッツ分析
+  - コンディション
+- チャット機能インターface
+- メッセージ送信フォーム
+
+#### 5. サポート画面
+- 開発中表示
+
+#### 共通機能
+- 固定ヘッダー（FootballLOG branding）
+- 固定フッターナビゲーション（5タブ、ホーム中央配置）
+- シンプルアイコン使用（⌂☰⧢◯⚙）
+
+### 将来の拡張予定
+- **状態管理強化** - Zustand導入予定
+- **ルーティング** - React Router導入予定
+- **API連携** - OpenAPI使用予定
+- **アニメーション** - Framer Motion導入予定
+- **データ永続化** - ローカルストレージ/データベース連携
+- **React Native移行** - モバイルアプリ化
 
 ## 作成時の留意点
 - まずはスマホで見せるデモなので、スマホのUIを中心に作り込んでほしい
