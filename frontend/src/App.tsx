@@ -1186,7 +1186,7 @@ const AIBuddyPage = () => (
     <h2 style={{ color: '#3C8DBC', marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>AIバディ</h2>
     
     {/* AI Agent Selection */}
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', marginBottom: '30px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '30px' }}>
       
       {/* Personal Highlight Agent */}
       <div style={{
@@ -1208,7 +1208,7 @@ const AIBuddyPage = () => (
           alignItems: 'center',
           justifyContent: 'center',
           fontSize: '28px'
-        }}>⭐</div>
+        }}><img src="/icon/icon14.svg" alt="プレーハイライト" width="28" height="28" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} /></div>
         <h3 style={{
           margin: '0 0 8px 0',
           fontSize: '14px',
@@ -1242,7 +1242,7 @@ const AIBuddyPage = () => (
           alignItems: 'center',
           justifyContent: 'center',
           fontSize: '28px'
-        }}>📋</div>
+        }}><img src="/icon/icon2.svg" alt="チーム戦術" width="28" height="28" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} /></div>
         <h3 style={{
           margin: '0 0 8px 0',
           fontSize: '14px',
@@ -1276,7 +1276,7 @@ const AIBuddyPage = () => (
           alignItems: 'center',
           justifyContent: 'center',
           fontSize: '28px'
-        }}>📊</div>
+        }}><img src="/icon/icon13.svg" alt="スタッツ分析" width="28" height="28" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} /></div>
         <h3 style={{
           margin: '0 0 8px 0',
           fontSize: '14px',
@@ -1310,7 +1310,7 @@ const AIBuddyPage = () => (
           alignItems: 'center',
           justifyContent: 'center',
           fontSize: '28px'
-        }}>💪</div>
+        }}><img src="/icon/icon11.svg" alt="コンディション" width="28" height="28" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} /></div>
         <h3 style={{
           margin: '0 0 8px 0',
           fontSize: '14px',
@@ -1324,84 +1324,6 @@ const AIBuddyPage = () => (
         }}>メディカルチェック</p>
       </div>
 
-    </div>
-
-    {/* Chat Interface */}
-    <div style={{
-      backgroundColor: 'white',
-      borderRadius: '16px',
-      padding: '20px',
-      boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-      marginBottom: '20px'
-    }}>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        marginBottom: '16px'
-      }}>
-        <div style={{
-          width: '40px',
-          height: '40px',
-          borderRadius: '50%',
-          backgroundColor: '#059669',
-          marginRight: '12px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '18px'
-        }}>🤖</div>
-        <div>
-          <h4 style={{ margin: '0', fontSize: '16px', fontWeight: 'bold', color: '#1f2937' }}>AIコーチ</h4>
-          <p style={{ margin: '2px 0 0 0', fontSize: '12px', color: '#6b7280' }}>どのバディに相談しますか？</p>
-        </div>
-      </div>
-
-      {/* Sample Messages */}
-      <div style={{
-        backgroundColor: '#f3f4f6',
-        borderRadius: '12px',
-        padding: '12px',
-        marginBottom: '16px'
-      }}>
-        <p style={{
-          margin: '0',
-          fontSize: '14px',
-          color: '#374151'
-        }}>こんにちは！今日はどんなことについて話しましょうか？</p>
-      </div>
-    </div>
-
-    {/* Input Area */}
-    <div style={{
-      backgroundColor: 'white',
-      borderRadius: '12px',
-      padding: '16px',
-      boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-      display: 'flex',
-      gap: '12px',
-      alignItems: 'center'
-    }}>
-      <input
-        placeholder="メッセージを入力..."
-        style={{
-          flex: 1,
-          padding: '12px',
-          border: '1px solid #e5e7eb',
-          borderRadius: '8px',
-          fontSize: '14px'
-        }}
-      />
-      <button style={{
-        backgroundColor: '#059669',
-        color: 'white',
-        border: 'none',
-        borderRadius: '8px',
-        padding: '12px 16px',
-        fontSize: '14px',
-        cursor: 'pointer'
-      }}>
-        送信
-      </button>
     </div>
   </div>
 );
