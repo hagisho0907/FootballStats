@@ -1,30 +1,410 @@
 {
   "attack": {
-    "goals": 12,
-    "shotsOnTarget": 28,
-    "assists": 6,
-    "keyPasses": 32,
-    "dribblesCompleted": 45
+    "goals": 1,
+    "shotsOnTarget": 2,
+    "assists": 0,
+    "keyPasses": 3,
+    "dribblesCompleted": 5
   },
   "defense": {
-    "tacklesWon": 48,
-    "interceptions": 27,
-    "clearances": 65,
-    "blocks": 12,
-    "aerialDuelsWon": 30
+    "tacklesWon": 2,
+    "interceptions": 1,
+    "clearances": 1,
+    "blocks": 1,
+    "aerialDuelsWon": 1
   },
   "passing": {
-    "passAccuracyPct": 86,
-    "totalPasses": 1250,
-    "longPassAccuracyPct": 63,
-    "crossesCompleted": 27,
-    "throughBalls": 14
+    "passAccuracyPct": 82,
+    "totalPasses": 38,
+    "longPassAccuracyPct": 45,
+    "crossesCompleted": 2,
+    "throughBalls": 1
   },
   "physics": {
-    "distanceKm": 11.3,
-    "sprints": 48,
-    "duelsWon": 72,
-    "foulsCommitted": 16,
-    "foulsSuffered": 22
+    "distanceKm": 10.8,
+    "sprints": 28,
+    "duelsWon": 7,
+    "foulsCommitted": 1,
+    "foulsSuffered": 2
+  },
+  "heatmapAttack": {
+    "coordSystem": "0-100 (x: left->right, y: bottom->top)",
+    "pitchSizeMeters": {
+      "length": 105,
+      "width": 68
+    },
+    "attackDirection": "leftToRight",
+    "events": [
+      {
+        "x": 27,
+        "y": 73,
+        "intensity": 4,
+        "phase": "open_play"
+      },
+      {
+        "x": 36,
+        "y": 54,
+        "intensity": 2,
+        "phase": "open_play"
+      },
+      {
+        "x": 19,
+        "y": 74,
+        "intensity": 3,
+        "phase": "counter"
+      },
+      {
+        "x": 40,
+        "y": 84,
+        "intensity": 2,
+        "phase": "open_play"
+      },
+      {
+        "x": 9,
+        "y": 74,
+        "intensity": 3,
+        "phase": "open_play"
+      },
+      {
+        "x": 23,
+        "y": 63,
+        "intensity": 3,
+        "phase": "counter"
+      },
+      {
+        "x": 52,
+        "y": 72,
+        "intensity": 3,
+        "phase": "set_piece"
+      },
+      {
+        "x": 36,
+        "y": 65,
+        "intensity": 1,
+        "phase": "open_play"
+      },
+      {
+        "x": 28,
+        "y": 52,
+        "intensity": 2,
+        "phase": "set_piece"
+      },
+      {
+        "x": 32,
+        "y": 83,
+        "intensity": 1,
+        "phase": "counter"
+      },
+      {
+        "x": 37,
+        "y": 61,
+        "intensity": 3,
+        "phase": "counter"
+      },
+      {
+        "x": 50,
+        "y": 82,
+        "intensity": 3,
+        "phase": "counter"
+      },
+      {
+        "x": 51,
+        "y": 72,
+        "intensity": 3,
+        "phase": "set_piece"
+      },
+      {
+        "x": 20,
+        "y": 69,
+        "intensity": 2,
+        "phase": "counter"
+      },
+      {
+        "x": 29,
+        "y": 53,
+        "intensity": 3,
+        "phase": "counter"
+      },
+      {
+        "x": 33,
+        "y": 58,
+        "intensity": 2,
+        "phase": "open_play"
+      },
+      {
+        "x": 31,
+        "y": 59,
+        "intensity": 2,
+        "phase": "counter"
+      },
+      {
+        "x": 20,
+        "y": 72,
+        "intensity": 3,
+        "phase": "counter"
+      },
+      {
+        "x": 46,
+        "y": 64,
+        "intensity": 2,
+        "phase": "set_piece"
+      },
+      {
+        "x": 21,
+        "y": 68,
+        "intensity": 3,
+        "phase": "counter"
+      },
+      {
+        "x": 36,
+        "y": 44,
+        "intensity": 1,
+        "phase": "open_play"
+      },
+      {
+        "x": 32,
+        "y": 49,
+        "intensity": 4,
+        "phase": "set_piece"
+      },
+      {
+        "x": 23,
+        "y": 66,
+        "intensity": 5,
+        "phase": "counter"
+      },
+      {
+        "x": 19,
+        "y": 72,
+        "intensity": 2,
+        "phase": "set_piece"
+      },
+      {
+        "x": 32,
+        "y": 75,
+        "intensity": 4,
+        "phase": "set_piece"
+      },
+      {
+        "x": 24,
+        "y": 78,
+        "intensity": 2,
+        "phase": "counter"
+      },
+      {
+        "x": 37,
+        "y": 82,
+        "intensity": 4,
+        "phase": "set_piece"
+      },
+      {
+        "x": 20,
+        "y": 64,
+        "intensity": 2,
+        "phase": "set_piece"
+      },
+      {
+        "x": 19,
+        "y": 65,
+        "intensity": 4,
+        "phase": "set_piece"
+      },
+      {
+        "x": 32,
+        "y": 76,
+        "intensity": 4,
+        "phase": "open_play"
+      }
+    ]
+  },
+  "heatmapDefense": {
+    "coordSystem": "0-100 (x: left->right, y: bottom->top)",
+    "pitchSizeMeters": {
+      "length": 105,
+      "width": 68
+    },
+    "attackDirection": "leftToRight",
+    "events": [
+      {
+        "x": 21,
+        "y": 61,
+        "intensity": 2,
+        "phase": "open_play"
+      },
+      {
+        "x": 33,
+        "y": 36,
+        "intensity": 4,
+        "phase": "counter"
+      },
+      {
+        "x": 29,
+        "y": 53,
+        "intensity": 3,
+        "phase": "open_play"
+      },
+      {
+        "x": 26,
+        "y": 33,
+        "intensity": 3,
+        "phase": "open_play"
+      },
+      {
+        "x": 20,
+        "y": 39,
+        "intensity": 2,
+        "phase": "set_piece"
+      },
+      {
+        "x": 39,
+        "y": 40,
+        "intensity": 4,
+        "phase": "set_piece"
+      },
+      {
+        "x": 30,
+        "y": 50,
+        "intensity": 2,
+        "phase": "set_piece"
+      },
+      {
+        "x": 20,
+        "y": 33,
+        "intensity": 2,
+        "phase": "counter"
+      },
+      {
+        "x": 37,
+        "y": 18,
+        "intensity": 2,
+        "phase": "set_piece"
+      },
+      {
+        "x": 44,
+        "y": 25,
+        "intensity": 3,
+        "phase": "open_play"
+      },
+      {
+        "x": 40,
+        "y": 40,
+        "intensity": 4,
+        "phase": "counter"
+      },
+      {
+        "x": 31,
+        "y": 45,
+        "intensity": 2,
+        "phase": "open_play"
+      },
+      {
+        "x": 26,
+        "y": 54,
+        "intensity": 3,
+        "phase": "set_piece"
+      },
+      {
+        "x": 27,
+        "y": 65,
+        "intensity": 2,
+        "phase": "counter"
+      },
+      {
+        "x": 37,
+        "y": 43,
+        "intensity": 2,
+        "phase": "counter"
+      },
+      {
+        "x": 36,
+        "y": 49,
+        "intensity": 3,
+        "phase": "counter"
+      },
+      {
+        "x": 11,
+        "y": 48,
+        "intensity": 2,
+        "phase": "counter"
+      },
+      {
+        "x": 27,
+        "y": 34,
+        "intensity": 2,
+        "phase": "set_piece"
+      },
+      {
+        "x": 22,
+        "y": 38,
+        "intensity": 2,
+        "phase": "open_play"
+      },
+      {
+        "x": 26,
+        "y": 49,
+        "intensity": 1,
+        "phase": "counter"
+      },
+      {
+        "x": 27,
+        "y": 46,
+        "intensity": 2,
+        "phase": "open_play"
+      },
+      {
+        "x": 50,
+        "y": 41,
+        "intensity": 3,
+        "phase": "set_piece"
+      },
+      {
+        "x": 18,
+        "y": 47,
+        "intensity": 3,
+        "phase": "counter"
+      },
+      {
+        "x": 24,
+        "y": 64,
+        "intensity": 1,
+        "phase": "counter"
+      },
+      {
+        "x": 19,
+        "y": 58,
+        "intensity": 2,
+        "phase": "open_play"
+      },
+      {
+        "x": 20,
+        "y": 54,
+        "intensity": 3,
+        "phase": "set_piece"
+      },
+      {
+        "x": 32,
+        "y": 25,
+        "intensity": 3,
+        "phase": "counter"
+      },
+      {
+        "x": 29,
+        "y": 51,
+        "intensity": 3,
+        "phase": "set_piece"
+      },
+      {
+        "x": 29,
+        "y": 68,
+        "intensity": 5,
+        "phase": "counter"
+      },
+      {
+        "x": 25,
+        "y": 37,
+        "intensity": 3,
+        "phase": "counter"
+      }
+    ]
   }
 }

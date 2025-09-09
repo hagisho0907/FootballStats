@@ -1187,6 +1187,135 @@ const StatsPage = ({ onStatsDetailOpen }) => {
   );
 };
 
+// ヒートマップコンポーネント
+const HeatmapField = ({ events, type }) => {
+  if (!events || events.length === 0) return null;
+
+  const getIntensityColor = (intensity) => {
+    const colors = {
+      1: 'rgba(255, 255, 0, 0.4)',   // 黄色 (低)
+      2: 'rgba(255, 165, 0, 0.5)',   // オレンジ
+      3: 'rgba(255, 69, 0, 0.6)',    // 赤オレンジ
+      4: 'rgba(255, 0, 0, 0.7)',     // 赤
+      5: 'rgba(139, 0, 0, 0.8)'      // 濃い赤 (高)
+    };
+    return colors[intensity] || colors[1];
+  };
+
+  const getPhaseColor = (phase) => {
+    const colors = {
+      'open_play': '#4CAF50',
+      'counter': '#FF5722', 
+      'set_piece': '#2196F3'
+    };
+    return colors[phase] || colors['open_play'];
+  };
+
+  return (
+    <div style={{
+      position: 'relative',
+      width: '100%',
+      maxWidth: '400px',
+      aspectRatio: '105/68', // サッカーフィールドの比率
+      backgroundColor: '#2E7D32',
+      border: '2px solid #FFF',
+      borderRadius: '8px',
+      margin: '0 auto',
+      overflow: 'hidden'
+    }}>
+      {/* フィールドライン */}
+      <svg
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%'
+        }}
+        viewBox="0 0 105 68"
+        preserveAspectRatio="none"
+      >
+        {/* センターライン */}
+        <line x1="52.5" y1="0" x2="52.5" y2="68" stroke="#FFF" strokeWidth="0.5" />
+        
+        {/* センターサークル */}
+        <circle cx="52.5" cy="34" r="9.15" fill="none" stroke="#FFF" strokeWidth="0.5" />
+        
+        {/* ペナルティエリア（左） */}
+        <rect x="0" y="20.32" width="16.5" height="27.36" fill="none" stroke="#FFF" strokeWidth="0.5" />
+        
+        {/* ペナルティエリア（右） */}
+        <rect x="88.5" y="20.32" width="16.5" height="27.36" fill="none" stroke="#FFF" strokeWidth="0.5" />
+        
+        {/* ゴールエリア（左） */}
+        <rect x="0" y="26.68" width="5.5" height="14.64" fill="none" stroke="#FFF" strokeWidth="0.5" />
+        
+        {/* ゴールエリア（右） */}
+        <rect x="99.5" y="26.68" width="5.5" height="14.64" fill="none" stroke="#FFF" strokeWidth="0.5" />
+      </svg>
+
+      {/* ヒートマップドット */}
+      {events.map((event, index) => (
+        <div
+          key={index}
+          style={{
+            position: 'absolute',
+            left: `${event.x}%`,
+            top: `${100 - event.y}%`, // Y座標を反転
+            width: '12px',
+            height: '12px',
+            borderRadius: '50%',
+            backgroundColor: getIntensityColor(event.intensity),
+            border: `2px solid ${getPhaseColor(event.phase)}`,
+            transform: 'translate(-50%, -50%)',
+            zIndex: 10
+          }}
+          title={`Intensity: ${event.intensity}, Phase: ${event.phase}`}
+        />
+      ))}
+
+      {/* 凡例 */}
+      <div style={{
+        position: 'absolute',
+        bottom: '5px',
+        left: '5px',
+        backgroundColor: 'rgba(0,0,0,0.7)',
+        borderRadius: '4px',
+        padding: '4px 6px',
+        fontSize: '8px',
+        color: 'white'
+      }}>
+        <div style={{ display: 'flex', gap: '6px', marginBottom: '2px' }}>
+          <span>強度:</span>
+          {[1,2,3,4,5].map(i => (
+            <div key={i} style={{
+              width: '8px', 
+              height: '8px', 
+              borderRadius: '50%', 
+              backgroundColor: getIntensityColor(i),
+              border: '1px solid white'
+            }} />
+          ))}
+        </div>
+        <div style={{ display: 'flex', gap: '6px', fontSize: '7px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+            <div style={{ width: '6px', height: '6px', backgroundColor: getPhaseColor('open_play') }} />
+            <span>OP</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+            <div style={{ width: '6px', height: '6px', backgroundColor: getPhaseColor('counter') }} />
+            <span>CT</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+            <div style={{ width: '6px', height: '6px', backgroundColor: getPhaseColor('set_piece') }} />
+            <span>SP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // スタッツ詳細ページのコンポーネント
 const StatsDetailPage = ({ cardId, onBack }) => {
   const [activeTab, setActiveTab] = useState('attack');
@@ -1352,40 +1481,70 @@ const StatsDetailPage = ({ cardId, onBack }) => {
 
         {currentStats && (
           <div style={{
-            backgroundColor: '#00385B',
-            borderRadius: '12px',
-            padding: '16px'
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '20px'
           }}>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '12px'
-            }}>
-              {Object.entries(getStatLabels(activeTab)).map(([key, label]) => (
-                <div key={key} style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  padding: '8px 12px',
-                  backgroundColor: '#031C32',
-                  borderRadius: '8px'
+            {/* ヒートマップ表示（AttackとDefenseタブのみ） */}
+            {(activeTab === 'attack' || activeTab === 'defense') && statsData && (
+              <div style={{
+                backgroundColor: '#00385B',
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <h4 style={{
+                  color: '#FBF9FA',
+                  marginBottom: '16px',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  textAlign: 'center'
                 }}>
-                  <span style={{
-                    color: '#3C8DBC',
-                    fontSize: '12px',
-                    flex: 1
+                  {activeTab === 'attack' ? 'アタック' : 'ディフェンス'}ヒートマップ
+                </h4>
+                <HeatmapField 
+                  events={statsData[`heatmap${activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}`]?.events} 
+                  type={activeTab}
+                />
+              </div>
+            )}
+
+            {/* スタッツ数値表示 */}
+            <div style={{
+              backgroundColor: '#00385B',
+              borderRadius: '12px',
+              padding: '16px'
+            }}>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '12px'
+              }}>
+                {Object.entries(getStatLabels(activeTab)).map(([key, label]) => (
+                  <div key={key} style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    padding: '8px 12px',
+                    backgroundColor: '#031C32',
+                    borderRadius: '8px'
                   }}>
-                    {label}
-                  </span>
-                  <span style={{
-                    color: '#FBF9FA',
-                    fontSize: '14px',
-                    fontWeight: 'bold'
-                  }}>
-                    {formatStatValue(key, currentStats[key] || 0)}
-                  </span>
-                </div>
-              ))}
+                    <span style={{
+                      color: '#3C8DBC',
+                      fontSize: '12px',
+                      flex: 1
+                    }}>
+                      {label}
+                    </span>
+                    <span style={{
+                      color: '#FBF9FA',
+                      fontSize: '14px',
+                      fontWeight: 'bold'
+                    }}>
+                      {formatStatValue(key, currentStats[key] || 0)}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
