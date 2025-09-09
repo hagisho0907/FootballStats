@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 // Simple page components
 const HomePage = () => (
-  <div style={{ padding: '0', backgroundColor: '#1a1a1a', minHeight: '100vh', color: 'white' }}>
+  <div style={{ padding: '0', backgroundColor: '#02070D', minHeight: '100vh', color: '#FBF9FA' }}>
     {/* Player Profile Section */}
     <div style={{ padding: '20px' }}>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
@@ -10,7 +10,7 @@ const HomePage = () => (
           width: '60px',
           height: '60px',
           borderRadius: '50%',
-          backgroundColor: '#059669',
+          backgroundColor: '#00385B',
           marginRight: '16px',
           display: 'flex',
           alignItems: 'center',
@@ -18,8 +18,8 @@ const HomePage = () => (
           fontSize: '24px'
         }}>👤</div>
         <div>
-          <h2 style={{ margin: '0', fontSize: '24px', color: 'white' }}>田中太郎</h2>
-          <p style={{ margin: '4px 0 0 0', color: '#9ca3af' }}>FC Club Forward</p>
+          <h2 style={{ margin: '0', fontSize: '24px', color: '#FBF9FA' }}>田中太郎</h2>
+          <p style={{ margin: '4px 0 0 0', color: '#3C8DBC' }}>FC Club Forward</p>
         </div>
       </div>
 
@@ -31,120 +31,106 @@ const HomePage = () => (
         marginBottom: '20px'
       }}>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '28px', fontWeight: 'bold', color: 'white' }}>12</div>
-          <div style={{ fontSize: '12px', color: '#9ca3af' }}>Matches</div>
+          <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#FBF9FA' }}>25</div>
+          <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Matches</div>
         </div>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '28px', fontWeight: 'bold', color: 'white' }}>950</div>
-          <div style={{ fontSize: '12px', color: '#9ca3af' }}>Mins Played</div>
+          <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#FBF9FA' }}>1920</div>
+          <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Mins Played</div>
         </div>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '28px', fontWeight: 'bold', color: 'white' }}>8</div>
-          <div style={{ fontSize: '12px', color: '#9ca3af' }}>Goals</div>
+          <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#FBF9FA' }}>16</div>
+          <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Goals</div>
         </div>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '28px', fontWeight: 'bold', color: 'white' }}>7.5</div>
-          <div style={{ fontSize: '12px', color: '#9ca3af' }}>Avg Rating</div>
+          <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#FBF9FA' }}>7.20</div>
+          <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Avg Rating</div>
         </div>
       </div>
     </div>
 
-    {/* Dashboard Cards Section - matching image1.png */}
-    <div style={{ padding: '0 20px 20px 20px' }}>
-      {/* Today's Condition Card */}
-      <div style={{
-        backgroundColor: 'white',
-        borderRadius: '16px',
-        padding: '20px',
-        marginBottom: '16px',
-        color: '#1a1a1a'
-      }}>
-        <h3 style={{ margin: '0 0 16px 0', fontSize: '18px', fontWeight: 'bold' }}>今日のコンディション</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span>🌙</span> 睡眠
-            </span>
-            <span style={{ fontWeight: 'bold' }}>7.2 時間</span>
+    {/* Stats Section with Tab Navigation - matching image2.png red box */}
+    <div style={{
+      backgroundColor: '#031C32',
+      borderRadius: '16px 16px 0 0',
+      padding: '20px',
+      margin: '0 20px'
+    }}>
+      {/* Tab Navigation */}
+      <div style={{ display: 'flex', marginBottom: '20px' }}>
+        {[
+          { name: 'Attack', color: '#3C8DBC', active: true },
+          { name: 'Defense', color: '#FBF9FA', active: false },
+          { name: 'Passing', color: '#FBF9FA', active: false },
+          { name: 'Physical', color: '#FBF9FA', active: false }
+        ].map((tab, index) => (
+          <button key={tab.name} style={{
+            padding: '8px 16px',
+            backgroundColor: 'transparent',
+            color: tab.color,
+            border: 'none',
+            borderBottom: tab.active ? `2px solid ${tab.color}` : '2px solid transparent',
+            marginRight: '8px',
+            fontSize: '14px',
+            cursor: 'pointer',
+            fontWeight: tab.active ? 'bold' : 'normal'
+          }}>
+            {tab.name}
+          </button>
+        ))}
+      </div>
+
+      {/* Attack Stats */}
+      <div style={{ marginBottom: '24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+          <div>
+            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#FBF9FA' }}>48</div>
+            <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Shots</div>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span>⚖️</span> 体重
-            </span>
-            <span style={{ fontWeight: 'bold' }}>65.4 kg</span>
+          <div>
+            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#FBF9FA' }}>23</div>
+            <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Shots on Target</div>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span>💚</span> HRV
-            </span>
-            <span style={{ fontWeight: 'bold' }}>良好</span>
+          <div>
+            <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#FBF9FA' }}>72.5%</div>
+            <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Dribble Succ.</div>
           </div>
         </div>
       </div>
 
-      {/* Performance Highlights Card */}
-      <div style={{
-        backgroundColor: 'white',
-        borderRadius: '16px',
-        padding: '20px',
-        marginBottom: '16px',
-        color: '#1a1a1a'
-      }}>
-        <h3 style={{ margin: '0 0 16px 0', fontSize: '18px', fontWeight: 'bold' }}>パフォーマンスハイライト</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span>🏃</span> 週間
-            </span>
-            <span style={{ fontWeight: 'bold' }}>12 h</span>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span>📍</span> 移行サート
-            </span>
-            <span style={{ fontWeight: 'bold' }}>35.2 km</span>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span>⚽</span> 試合スタッシ
-            </span>
-            <span style={{ fontWeight: 'bold' }}>2G / 1A</span>
-          </div>
+      {/* Additional Stats Row */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', marginBottom: '20px' }}>
+        <div>
+          <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#FBF9FA' }}>20</div>
+          <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Key Pass</div>
+        </div>
+        <div>
+          <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#FBF9FA' }}>4</div>
+          <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Assists</div>
         </div>
       </div>
 
-      {/* Schedule Card */}
-      <div style={{
-        backgroundColor: 'white',
-        borderRadius: '16px',
-        padding: '20px',
-        marginBottom: '16px',
-        color: '#1a1a1a'
-      }}>
-        <h3 style={{ margin: '0 0 16px 0', fontSize: '18px', fontWeight: 'bold' }}>予定</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span>📅</span>
-            <span>9/10(火) 18:00 て〜</span>
+      {/* Passing Direction Chart */}
+      <div style={{ marginTop: '20px' }}>
+        <h4 style={{ color: '#FBF9FA', margin: '0 0 12px 0' }}>Passing Direction</h4>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '8px',
+          textAlign: 'center'
+        }}>
+          <div>
+            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#24A0FF' }}>43%</div>
+            <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Forward</div>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span>⏰</span>
-            <span>9/12(木) vs ○○高校</span>
+          <div>
+            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#026ACB' }}>37%</div>
+            <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Backward</div>
           </div>
-        </div>
-      </div>
-
-      {/* Coaching Feed Card */}
-      <div style={{
-        backgroundColor: 'white',
-        borderRadius: '16px',
-        padding: '20px',
-        color: '#1a1a1a'
-      }}>
-        <h3 style={{ margin: '0 0 16px 0', fontSize: '18px', fontWeight: 'bold' }}>コーチングフィード</h3>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span>💬</span>
-          <span>フィードバックあり (新着3件)</span>
+          <div>
+            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#00385B' }}>20%</div>
+            <div style={{ fontSize: '12px', color: '#3C8DBC' }}>HL</div>
+          </div>
         </div>
       </div>
     </div>
@@ -152,20 +138,20 @@ const HomePage = () => (
 );
 
 const CalendarPage = () => (
-  <div style={{ backgroundColor: '#f5f5f5', minHeight: '100vh', padding: '0' }}>
+  <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '0' }}>
     {/* Tab Navigation */}
     <div style={{
       display: 'flex',
-      backgroundColor: 'white',
-      borderBottom: '1px solid #e5e7eb'
+      backgroundColor: '#02070D',
+      borderBottom: '1px solid #031C32'
     }}>
       <button style={{
         flex: 1,
         padding: '16px',
         backgroundColor: 'transparent',
         border: 'none',
-        borderBottom: '3px solid #059669',
-        color: '#059669',
+        borderBottom: '3px solid #3C8DBC',
+        color: '#3C8DBC',
         fontWeight: 'bold',
         fontSize: '16px'
       }}>
@@ -177,7 +163,7 @@ const CalendarPage = () => (
         backgroundColor: 'transparent',
         border: 'none',
         borderBottom: '3px solid transparent',
-        color: '#9ca3af',
+        color: '#FBF9FA',
         fontSize: '16px'
       }}>
         サッカーノート
@@ -185,7 +171,7 @@ const CalendarPage = () => (
     </div>
 
     {/* Calendar Header */}
-    <div style={{ padding: '20px', backgroundColor: 'white' }}>
+    <div style={{ padding: '20px', backgroundColor: '#02070D' }}>
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',
@@ -196,11 +182,11 @@ const CalendarPage = () => (
           margin: 0,
           fontSize: '36px',
           fontStyle: 'italic',
-          color: '#9ca3af'
+          color: '#3C8DBC'
         }}>Calendar</h2>
         <button style={{
-          backgroundColor: '#059669',
-          color: 'white',
+          backgroundColor: '#3C8DBC',
+          color: '#FBF9FA',
           border: 'none',
           borderRadius: '25px',
           padding: '12px 24px',
@@ -225,37 +211,37 @@ const CalendarPage = () => (
           background: 'none',
           border: 'none',
           fontSize: '24px',
-          color: '#059669'
+          color: '#3C8DBC'
         }}>‹</button>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '36px', color: '#059669', fontWeight: 'bold' }}>09</div>
-          <div style={{ fontSize: '18px', color: '#059669' }}>2025</div>
+          <div style={{ fontSize: '36px', color: '#3C8DBC', fontWeight: 'bold' }}>09</div>
+          <div style={{ fontSize: '18px', color: '#3C8DBC' }}>2025</div>
         </div>
         <button style={{
           background: 'none',
           border: 'none',
           fontSize: '24px',
-          color: '#059669'
+          color: '#3C8DBC'
         }}>›</button>
       </div>
     </div>
 
     {/* Calendar Grid */}
-    <div style={{ padding: '0 20px 20px 20px', backgroundColor: 'white' }}>
+    <div style={{ padding: '0 20px 20px 20px', backgroundColor: '#02070D' }}>
       {/* Day Headers */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(7, 1fr)',
         gap: '1px',
         marginBottom: '10px',
-        borderBottom: '2px solid #059669',
+        borderBottom: '2px solid #3C8DBC',
         paddingBottom: '10px'
       }}>
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day, index) => (
           <div key={day} style={{
             textAlign: 'center',
             fontSize: '14px',
-            color: index === 0 ? '#ef4444' : index === 6 ? '#3b82f6' : '#6b7280',
+            color: index === 0 ? '#24A0FF' : index === 6 ? '#026ACB' : '#FBF9FA',
             fontWeight: 'bold'
           }}>
             {day}
@@ -274,7 +260,7 @@ const CalendarPage = () => (
             textAlign: 'center',
             padding: '12px 4px',
             fontSize: '16px',
-            color: '#374151',
+            color: '#FBF9FA',
             cursor: 'pointer',
             borderRadius: '4px'
           }}>
@@ -285,9 +271,9 @@ const CalendarPage = () => (
     </div>
 
     {/* Monthly Summary */}
-    <div style={{ padding: '20px', backgroundColor: '#f5f5f5' }}>
+    <div style={{ padding: '20px', backgroundColor: '#02070D' }}>
       <div style={{
-        backgroundColor: 'white',
+        backgroundColor: '#031C32',
         borderRadius: '16px',
         padding: '20px'
       }}>
@@ -295,7 +281,7 @@ const CalendarPage = () => (
           margin: '0 0 16px 0',
           fontSize: '24px',
           fontStyle: 'italic',
-          color: '#9ca3af'
+          color: '#3C8DBC'
         }}>2025・09</h3>
       </div>
     </div>
@@ -308,11 +294,11 @@ const CalendarPage = () => (
       width: '60px',
       height: '60px',
       borderRadius: '50%',
-      backgroundColor: '#059669',
-      color: 'white',
+      backgroundColor: '#3C8DBC',
+      color: '#FBF9FA',
       border: 'none',
       fontSize: '24px',
-      boxShadow: '0 4px 12px rgba(5, 150, 105, 0.4)',
+      boxShadow: '0 4px 12px rgba(60, 141, 188, 0.4)',
       cursor: 'pointer'
     }}>
       +
@@ -321,26 +307,26 @@ const CalendarPage = () => (
 );
 
 const StatsPage = () => (
-  <div style={{ backgroundColor: '#f5f5f5', minHeight: '100vh', padding: '20px' }}>
-    <h2 style={{ color: '#059669', marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>スタッツ</h2>
+  <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
+    <h2 style={{ color: '#3C8DBC', marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>スタッツ</h2>
     
     {/* Match Cards */}
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       
       {/* Match 1 - Detailed */}
       <div style={{
-        backgroundColor: 'white',
+        backgroundColor: '#031C32',
         borderRadius: '12px',
-        border: '2px solid #ef4444',
+        border: '2px solid #24A0FF',
         padding: '20px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
       }}>
         <div style={{ textAlign: 'center', marginBottom: '20px' }}>
           <h3 style={{
             margin: '0 0 8px 0',
             fontSize: '16px',
             fontWeight: 'bold',
-            color: '#1f2937'
+            color: '#FBF9FA'
           }}>2025/9/8 vs TOKYO UNITED</h3>
         </div>
 
@@ -785,30 +771,28 @@ function App() {
   return (
     <div style={{ 
       fontFamily: 'Inter, system-ui, sans-serif',
-      backgroundColor: '#f9fafb',
+      backgroundColor: '#02070D',
       minHeight: '100vh',
       paddingBottom: '80px'
     }}>
       {/* Header */}
       <div style={{
-        backgroundColor: '#059669',
-        color: 'white',
+        backgroundColor: '#02070D',
+        color: '#FBF9FA',
         padding: '16px',
-        textAlign: 'center'
+        textAlign: 'center',
+        borderBottom: '1px solid #031C32'
       }}>
-        <h1 style={{ margin: '0', fontSize: '24px', fontWeight: 'bold' }}>
-          footballLOG
+        <h1 style={{ margin: '0', fontSize: '18px', fontWeight: 'normal' }}>
+          Soccer Note
         </h1>
-        <p style={{ margin: '4px 0 0 0', opacity: 0.9, fontSize: '14px' }}>
-          Football Stats & Analytics
-        </p>
       </div>
 
       {/* Main Content */}
       <div style={{
         maxWidth: '448px',
         margin: '0 auto',
-        backgroundColor: 'white',
+        backgroundColor: '#02070D',
         minHeight: 'calc(100vh - 160px)'
       }}>
         {renderPage()}
@@ -820,8 +804,8 @@ function App() {
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: 'white',
-        borderTop: '1px solid #e5e7eb',
+        backgroundColor: '#02070D',
+        borderTop: '1px solid #031C32',
         paddingBottom: '8px'
       }}>
         <div style={{
@@ -841,10 +825,10 @@ function App() {
                 alignItems: 'center',
                 gap: '4px',
                 padding: '8px',
-                backgroundColor: currentPage === item.id ? '#059669' : 'transparent',
+                backgroundColor: currentPage === item.id ? '#3C8DBC' : 'transparent',
                 borderRadius: '8px',
                 border: 'none',
-                color: currentPage === item.id ? 'white' : '#6b7280',
+                color: currentPage === item.id ? '#FBF9FA' : '#3C8DBC',
                 fontSize: '12px',
                 fontWeight: '600',
                 cursor: 'pointer',
