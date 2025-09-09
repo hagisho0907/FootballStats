@@ -1,0 +1,30 @@
+{
+  "attack": {
+    "goals": 7,
+    "shotsOnTarget": 19,
+    "assists": 9,
+    "keyPasses": 41,
+    "dribblesCompleted": 38
+  },
+  "defense": {
+    "tacklesWon": 56,
+    "interceptions": 34,
+    "clearances": 71,
+    "blocks": 18,
+    "aerialDuelsWon": 41
+  },
+  "passing": {
+    "passAccuracyPct": 91,
+    "totalPasses": 1430,
+    "longPassAccuracyPct": 70,
+    "crossesCompleted": 33,
+    "throughBalls": 18
+  },
+  "physics": {
+    "distanceKm": 12.1,
+    "sprints": 55,
+    "duelsWon": 81,
+    "foulsCommitted": 21,
+    "foulsSuffered": 19
+  }
+}

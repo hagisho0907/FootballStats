@@ -1193,12 +1193,20 @@ const StatsDetailPage = ({ cardId, onBack }) => {
   const [statsData, setStatsData] = useState(null);
 
   useEffect(() => {
-    // JSONデータを読み込み
-    fetch('/data/stats.json')
+    // カード別のJSONデータを読み込み
+    const getStatsFileName = (cardId) => {
+      if (cardId === 1) return 'statsA.json';
+      if (cardId === 2) return 'statsB.json';
+      if (cardId === 3) return 'statsC.json';
+      return 'statsA.json'; // デフォルト
+    };
+
+    const fileName = getStatsFileName(cardId);
+    fetch(`/data/${fileName}`)
       .then(response => response.json())
       .then(data => setStatsData(data))
       .catch(error => console.error('Error loading stats data:', error));
-  }, []);
+  }, [cardId]);
 
   const tabs = [
     { id: 'attack', label: 'Attack', color: '#ff4444' },
@@ -1266,7 +1274,7 @@ const StatsDetailPage = ({ cardId, onBack }) => {
     );
   }
 
-  const currentStats = statsData[activeTab] || [];
+  const currentStats = statsData ? statsData[activeTab] : null;
 
   return (
     <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
@@ -1342,22 +1350,12 @@ const StatsDetailPage = ({ cardId, onBack }) => {
           {tabs.find(t => t.id === activeTab)?.label} Stats
         </h3>
 
-        {currentStats.map((player, index) => (
-          <div key={player.playerId} style={{
+        {currentStats && (
+          <div style={{
             backgroundColor: '#00385B',
             borderRadius: '12px',
-            padding: '16px',
-            marginBottom: '16px'
+            padding: '16px'
           }}>
-            <h4 style={{
-              color: '#FBF9FA',
-              marginBottom: '12px',
-              fontSize: '16px',
-              fontWeight: 'bold'
-            }}>
-              {player.playerName}
-            </h4>
-
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -1384,13 +1382,13 @@ const StatsDetailPage = ({ cardId, onBack }) => {
                     fontSize: '14px',
                     fontWeight: 'bold'
                   }}>
-                    {formatStatValue(key, player[key] || 0)}
+                    {formatStatValue(key, currentStats[key] || 0)}
                   </span>
                 </div>
               ))}
             </div>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
