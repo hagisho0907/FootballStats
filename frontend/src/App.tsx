@@ -62,21 +62,21 @@ const HomePage = () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
-              <span style={{ fontSize: '20px' }}>🌙</span>
+              <img src="/icon/icon6.svg" alt="睡眠" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
               <span style={{ color: '#FBF9FA' }}>睡眠</span>
             </span>
             <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>7.2 時間</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
-              <span style={{ fontSize: '20px' }}>⚖️</span>
+              <img src="/icon/icon7.svg" alt="体重" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
               <span style={{ color: '#FBF9FA' }}>体重</span>
             </span>
             <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>65.4 kg</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
-              <span style={{ fontSize: '20px' }}>💚</span>
+              <img src="/icon/icon8.svg" alt="HRV" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
               <span style={{ color: '#FBF9FA' }}>HRV</span>
             </span>
             <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>良好</span>
@@ -95,21 +95,21 @@ const HomePage = () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
-              <span style={{ fontSize: '20px' }}>🏃</span>
+              <img src="/icon/icon11.svg" alt="週の総活動時間" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
               <span style={{ color: '#FBF9FA' }}>週間</span>
             </span>
             <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>12 h</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
-              <span style={{ fontSize: '20px' }}>📍</span>
+              <img src="/icon/icon9.svg" alt="総走行距離" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
               <span style={{ color: '#FBF9FA' }}>移行サート</span>
             </span>
             <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>35.2 km</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
-              <span style={{ fontSize: '20px' }}>⚽</span>
+              <img src="/icon/icon2.svg" alt="試合成績" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
               <span style={{ color: '#FBF9FA' }}>試合スタッシ</span>
             </span>
             <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>2G / 1A</span>
@@ -127,11 +127,11 @@ const HomePage = () => (
         <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', fontWeight: 'bold', color: '#FBF9FA' }}>予定</h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ fontSize: '20px' }}>📅</span>
+            <img src="/icon/icon3.svg" alt="予定" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
             <span style={{ color: '#FBF9FA' }}>9/10(火) 18:00 て〜</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ fontSize: '20px' }}>⏰</span>
+            <img src="/icon/icon3.svg" alt="予定" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
             <span style={{ color: '#FBF9FA' }}>9/12(木) vs ○○高校</span>
           </div>
         </div>
@@ -145,7 +145,7 @@ const HomePage = () => (
       }}>
         <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', fontWeight: 'bold', color: '#FBF9FA' }}>コーチングフィード</h3>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{ fontSize: '20px' }}>💬</span>
+          <img src="/icon/icon10.svg" alt="フィードバック" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
           <span style={{ color: '#FBF9FA' }}>フィードバックあり (新着3件)</span>
         </div>
       </div>
