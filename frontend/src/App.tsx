@@ -750,11 +750,11 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
   const navigation = [
-    { id: 'home', label: 'ホーム', icon: '●' },
-    { id: 'calendar', label: 'カレンダー', icon: '□' },
-    { id: 'stats', label: 'スタッツ', icon: '▲' },
-    { id: 'ai-buddy', label: 'AIバディ', icon: '○' },
-    { id: 'support', label: 'サポート', icon: '◇' }
+    { id: 'home', label: 'ホーム', icon: '⌂' },
+    { id: 'calendar', label: 'カレンダー', icon: '☰' },
+    { id: 'stats', label: 'スタッツ', icon: '⧢' },
+    { id: 'ai-buddy', label: 'AIバディ', icon: '◯' },
+    { id: 'support', label: 'サポート', icon: '⚙' }
   ];
 
   const renderPage = () => {
