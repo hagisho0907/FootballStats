@@ -324,7 +324,24 @@ const CalendarPage = () => (
 
 const StatsPage = () => (
   <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
-    <h2 style={{ color: '#3C8DBC', marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>スタッツ</h2>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+      <h2 style={{ color: '#3C8DBC', margin: '0', fontSize: '24px', fontWeight: 'bold' }}>スタッツ</h2>
+      <button style={{
+        backgroundColor: '#3C8DBC',
+        color: '#FBF9FA',
+        border: 'none',
+        borderRadius: '25px',
+        padding: '12px 20px',
+        fontSize: '14px',
+        fontWeight: 'bold',
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '6px'
+      }}>
+        + 新規登録
+      </button>
+    </div>
     
     {/* Match Cards - Vertical Layout */}
     <div style={{ 
@@ -367,14 +384,16 @@ const StatsPage = () => (
             <div style={{
               width: '80px',
               height: '60px',
-              backgroundColor: '#4b5563',
+              backgroundColor: '#00385B',
               borderRadius: '8px',
               margin: '0 auto',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: '24px'
-            }}>📹</div>
+            }}>
+              <img src="/icon/icon12.svg" alt="動画" width="24" height="24" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
+            </div>
           </div>
 
           {/* Stats Section */}
@@ -388,7 +407,7 @@ const StatsPage = () => (
             <div style={{
               width: '80px',
               height: '60px',
-              backgroundColor: '#e5e7eb',
+              backgroundColor: '#026ACB',
               borderRadius: '8px',
               margin: '0 auto',
               display: 'flex',
@@ -396,32 +415,7 @@ const StatsPage = () => (
               justifyContent: 'center',
               position: 'relative'
             }}>
-              {/* Mock Bar Chart */}
-              <div style={{
-                display: 'flex',
-                alignItems: 'end',
-                gap: '4px',
-                height: '40px'
-              }}>
-                <div style={{
-                  width: '8px',
-                  height: '25px',
-                  backgroundColor: '#22c55e',
-                  borderRadius: '2px'
-                }}></div>
-                <div style={{
-                  width: '8px',
-                  height: '15px',
-                  backgroundColor: '#ef4444',
-                  borderRadius: '2px'
-                }}></div>
-                <div style={{
-                  width: '8px',
-                  height: '35px',
-                  backgroundColor: '#3b82f6',
-                  borderRadius: '2px'
-                }}></div>
-              </div>
+              <img src="/icon/icon13.svg" alt="スタッツ" width="24" height="24" style={{ filter: 'invert(1)' }} />
             </div>
           </div>
         </div>
@@ -431,7 +425,7 @@ const StatsPage = () => (
       <div style={{
         backgroundColor: '#031C32',
         borderRadius: '12px',
-        border: '2px solid #026ACB',
+        border: '2px solid #3C8DBC',
         padding: '20px',
         boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
       }}>
@@ -461,14 +455,16 @@ const StatsPage = () => (
             <div style={{
               width: '80px',
               height: '60px',
-              backgroundColor: '#4b5563',
+              backgroundColor: '#00385B',
               borderRadius: '8px',
               margin: '0 auto',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: '24px'
-            }}>📹</div>
+            }}>
+              <img src="/icon/icon12.svg" alt="動画" width="24" height="24" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
+            </div>
           </div>
 
           {/* Stats Section */}
@@ -482,7 +478,7 @@ const StatsPage = () => (
             <div style={{
               width: '80px',
               height: '60px',
-              backgroundColor: '#e5e7eb',
+              backgroundColor: '#026ACB',
               borderRadius: '8px',
               margin: '0 auto',
               display: 'flex',
@@ -490,32 +486,7 @@ const StatsPage = () => (
               justifyContent: 'center',
               position: 'relative'
             }}>
-              {/* Mock Bar Chart */}
-              <div style={{
-                display: 'flex',
-                alignItems: 'end',
-                gap: '4px',
-                height: '40px'
-              }}>
-                <div style={{
-                  width: '8px',
-                  height: '20px',
-                  backgroundColor: '#22c55e',
-                  borderRadius: '2px'
-                }}></div>
-                <div style={{
-                  width: '8px',
-                  height: '30px',
-                  backgroundColor: '#ef4444',
-                  borderRadius: '2px'
-                }}></div>
-                <div style={{
-                  width: '8px',
-                  height: '25px',
-                  backgroundColor: '#3b82f6',
-                  borderRadius: '2px'
-                }}></div>
-              </div>
+              <img src="/icon/icon13.svg" alt="スタッツ" width="24" height="24" style={{ filter: 'invert(1)' }} />
             </div>
           </div>
         </div>
@@ -525,7 +496,7 @@ const StatsPage = () => (
       <div style={{
         backgroundColor: '#031C32',
         borderRadius: '12px',
-        border: '1px solid #00385B',
+        border: '2px solid #00385B',
         padding: '20px',
         boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
       }}>
@@ -534,7 +505,7 @@ const StatsPage = () => (
             margin: '0 0 8px 0',
             fontSize: '16px',
             fontWeight: 'bold',
-            color: '#3C8DBC'
+            color: '#FBF9FA'
           }}>2025/8/25 VS FC東京</h3>
         </div>
 
@@ -562,7 +533,9 @@ const StatsPage = () => (
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: '24px'
-            }}>📹</div>
+            }}>
+              <img src="/icon/icon12.svg" alt="動画" width="24" height="24" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
+            </div>
           </div>
 
           {/* Stats Section */}
@@ -576,7 +549,7 @@ const StatsPage = () => (
             <div style={{
               width: '80px',
               height: '60px',
-              backgroundColor: '#00385B',
+              backgroundColor: '#026ACB',
               borderRadius: '8px',
               margin: '0 auto',
               display: 'flex',
@@ -584,32 +557,7 @@ const StatsPage = () => (
               justifyContent: 'center',
               position: 'relative'
             }}>
-              {/* Mock Bar Chart */}
-              <div style={{
-                display: 'flex',
-                alignItems: 'end',
-                gap: '4px',
-                height: '40px'
-              }}>
-                <div style={{
-                  width: '8px',
-                  height: '15px',
-                  backgroundColor: '#6b7280',
-                  borderRadius: '2px'
-                }}></div>
-                <div style={{
-                  width: '8px',
-                  height: '25px',
-                  backgroundColor: '#6b7280',
-                  borderRadius: '2px'
-                }}></div>
-                <div style={{
-                  width: '8px',
-                  height: '20px',
-                  backgroundColor: '#6b7280',
-                  borderRadius: '2px'
-                }}></div>
-              </div>
+              <img src="/icon/icon13.svg" alt="スタッツ" width="24" height="24" style={{ filter: 'invert(1)' }} />
             </div>
           </div>
         </div>
