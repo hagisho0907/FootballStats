@@ -155,6 +155,54 @@ const HomePage = () => (
 
 const CalendarPage = () => {
   const [activeTab, setActiveTab] = useState('calendar');
+  const [currentMonth, setCurrentMonth] = useState(9); // September 2025
+  const [currentYear] = useState(2025);
+  const [selectedDate, setSelectedDate] = useState<number | null>(null);
+  const [showNoteModal, setShowNoteModal] = useState(false);
+  const [noteText, setNoteText] = useState('');
+  const [notes, setNotes] = useState<{[key: string]: string}>({
+    '2025-9-8': 'vs TOKYO UNITED 試合反省',
+    '2025-9-12': '練習メモ - パス精度向上'
+  });
+
+  const monthNames = ['', 'January', 'February', 'March', 'April', 'May', 'June', 
+                     'July', 'August', 'September', 'October', 'November', 'December'];
+  
+  const getDaysInMonth = (month: number, year: number) => {
+    return new Date(year, month, 0).getDate();
+  };
+  
+  const getFirstDayOfMonth = (month: number, year: number) => {
+    return new Date(year, month - 1, 1).getDay();
+  };
+
+  const handleDateClick = (day: number) => {
+    setSelectedDate(day);
+    const noteKey = `${currentYear}-${currentMonth}-${day}`;
+    setNoteText(notes[noteKey] || '');
+    setShowNoteModal(true);
+  };
+
+  const saveNote = () => {
+    const noteKey = `${currentYear}-${currentMonth}-${selectedDate}`;
+    if (noteText.trim()) {
+      setNotes({...notes, [noteKey]: noteText});
+    } else {
+      const newNotes = {...notes};
+      delete newNotes[noteKey];
+      setNotes(newNotes);
+    }
+    setShowNoteModal(false);
+    setNoteText('');
+    setSelectedDate(null);
+  };
+
+  const navigateMonth = (direction: number) => {
+    let newMonth = currentMonth + direction;
+    if (newMonth < 7) newMonth = 7;
+    if (newMonth > 12) newMonth = 12;
+    setCurrentMonth(newMonth);
+  };
 
   return (
   <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '0' }}>
@@ -237,24 +285,30 @@ const CalendarPage = () => {
         alignItems: 'center',
         marginBottom: '30px'
       }}>
-        <button style={{
+        <button 
+          onClick={() => navigateMonth(-1)}
+          style={{
           background: 'none',
           border: 'none',
           fontSize: '32px',
-          color: '#3C8DBC',
-          cursor: 'pointer',
+          color: currentMonth > 7 ? '#3C8DBC' : '#6b7280',
+          cursor: currentMonth > 7 ? 'pointer' : 'not-allowed',
           padding: '8px'
         }}>‹</button>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '48px', color: '#3C8DBC', fontWeight: 'bold', margin: '0' }}>09</div>
-          <div style={{ fontSize: '20px', color: '#3C8DBC', margin: '0' }}>2025</div>
+          <div style={{ fontSize: '48px', color: '#3C8DBC', fontWeight: 'bold', margin: '0' }}>
+            {currentMonth.toString().padStart(2, '0')}
+          </div>
+          <div style={{ fontSize: '20px', color: '#3C8DBC', margin: '0' }}>{currentYear}</div>
         </div>
-        <button style={{
+        <button 
+          onClick={() => navigateMonth(1)}
+          style={{
           background: 'none',
           border: 'none',
           fontSize: '32px',
-          color: '#3C8DBC',
-          cursor: 'pointer',
+          color: currentMonth < 12 ? '#3C8DBC' : '#6b7280',
+          cursor: currentMonth < 12 ? 'pointer' : 'not-allowed',
           padding: '8px'
         }}>›</button>
       </div>
@@ -287,39 +341,153 @@ const CalendarPage = () => {
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(7, 1fr)',
-        gap: '1px'
+        gap: '2px'
       }}>
-        {Array.from({length: 30}, (_, i) => i + 1).map((day, index) => (
-          <div key={day} style={{
-            textAlign: 'center',
-            padding: '12px 4px',
-            fontSize: '16px',
-            color: '#FBF9FA',
-            cursor: 'pointer',
-            borderRadius: '4px'
-          }}>
-            {day}
-          </div>
+        {/* Empty cells for days before month start */}
+        {Array.from({length: getFirstDayOfMonth(currentMonth, currentYear)}, (_, i) => (
+          <div key={`empty-${i}`} style={{ height: '40px' }}></div>
         ))}
+        
+        {/* Actual calendar days */}
+        {Array.from({length: getDaysInMonth(currentMonth, currentYear)}, (_, i) => {
+          const day = i + 1;
+          const noteKey = `${currentYear}-${currentMonth}-${day}`;
+          const hasNote = notes[noteKey];
+          
+          return (
+            <div 
+              key={day} 
+              onClick={() => handleDateClick(day)}
+              style={{
+                textAlign: 'center',
+                padding: '8px 4px',
+                fontSize: '16px',
+                color: '#FBF9FA',
+                cursor: 'pointer',
+                borderRadius: '4px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                backgroundColor: hasNote ? '#3C8DBC' : 'transparent',
+                '&:hover': {
+                  backgroundColor: '#031C32'
+                }
+              }}>
+              {day}
+              {hasNote && (
+                <div style={{
+                  position: 'absolute',
+                  bottom: '2px',
+                  right: '2px',
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  backgroundColor: '#24A0FF'
+                }}></div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
 
-    {/* Monthly Summary */}
-    <div style={{ padding: '20px', backgroundColor: '#02070D' }}>
+    </>
+    )}
+
+    {/* Note Modal */}
+    {showNoteModal && (
       <div style={{
-        backgroundColor: '#031C32',
-        borderRadius: '16px',
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1000,
         padding: '20px'
       }}>
-        <h3 style={{
-          margin: '0 0 16px 0',
-          fontSize: '24px',
-          fontStyle: 'italic',
-          color: '#3C8DBC'
-        }}>2025・09</h3>
+        <div style={{
+          backgroundColor: '#031C32',
+          borderRadius: '16px',
+          padding: '24px',
+          width: '100%',
+          maxWidth: '400px'
+        }}>
+          <h3 style={{
+            margin: '0 0 16px 0',
+            color: '#FBF9FA',
+            fontSize: '18px',
+            fontWeight: 'bold'
+          }}>
+            {currentYear}/{currentMonth}/{selectedDate} のノート
+          </h3>
+          
+          <textarea
+            value={noteText}
+            onChange={(e) => setNoteText(e.target.value)}
+            placeholder="サッカーノートを記録しよう..."
+            style={{
+              width: '100%',
+              height: '120px',
+              padding: '12px',
+              backgroundColor: '#FBF9FA',
+              border: 'none',
+              borderRadius: '8px',
+              fontSize: '14px',
+              color: '#02070D',
+              resize: 'vertical',
+              fontFamily: 'inherit',
+              boxSizing: 'border-box'
+            }}
+          />
+          
+          <div style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            gap: '12px',
+            marginTop: '16px'
+          }}>
+            <button
+              onClick={() => {
+                setShowNoteModal(false);
+                setNoteText('');
+                setSelectedDate(null);
+              }}
+              style={{
+                padding: '8px 16px',
+                backgroundColor: 'transparent',
+                border: '1px solid #6b7280',
+                borderRadius: '8px',
+                color: '#6b7280',
+                cursor: 'pointer',
+                fontSize: '14px'
+              }}
+            >
+              キャンセル
+            </button>
+            <button
+              onClick={saveNote}
+              style={{
+                padding: '8px 16px',
+                backgroundColor: '#3C8DBC',
+                border: 'none',
+                borderRadius: '8px',
+                color: '#FBF9FA',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}
+            >
+              保存
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-    </>
     )}
 
     {/* Soccer Notes Tab Content */}
@@ -386,17 +554,66 @@ const CalendarPage = () => {
           </button>
         </div>
         
-        {/* Empty State Message */}
-        <div style={{
-          textAlign: 'center',
-          marginTop: '80px'
-        }}>
-          <p style={{
-            fontSize: '18px',
-            color: '#6b7280',
-            margin: '0'
-          }}>サッカーノートを記録しよう</p>
-        </div>
+        {/* Notes List */}
+        {Object.keys(notes).length > 0 ? (
+          <div style={{
+            backgroundColor: '#031C32',
+            borderRadius: '16px',
+            padding: '20px'
+          }}>
+            <h3 style={{
+              margin: '0 0 16px 0',
+              fontSize: '18px',
+              color: '#FBF9FA',
+              fontWeight: 'bold'
+            }}>最近のノート</h3>
+            
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px'
+            }}>
+              {Object.entries(notes)
+                .sort(([a], [b]) => b.localeCompare(a))
+                .map(([dateKey, note]) => {
+                  const [year, month, day] = dateKey.split('-');
+                  return (
+                    <div key={dateKey} style={{
+                      padding: '12px',
+                      backgroundColor: '#00385B',
+                      borderRadius: '8px',
+                      cursor: 'pointer'
+                    }}>
+                      <div style={{
+                        fontSize: '14px',
+                        color: '#3C8DBC',
+                        marginBottom: '4px'
+                      }}>
+                        {year}/{month}/{day}
+                      </div>
+                      <div style={{
+                        fontSize: '16px',
+                        color: '#FBF9FA'
+                      }}>
+                        {note}
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+        ) : (
+          <div style={{
+            textAlign: 'center',
+            marginTop: '80px'
+          }}>
+            <p style={{
+              fontSize: '18px',
+              color: '#6b7280',
+              margin: '0'
+            }}>サッカーノートを記録しよう</p>
+          </div>
+        )}
       </div>
     )}
 
