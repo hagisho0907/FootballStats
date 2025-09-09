@@ -690,7 +690,9 @@ const CalendarPage = () => {
     )}
 
     {/* Floating Action Button */}
-    <button style={{
+    <button 
+      onClick={handleNewNoteClick}
+      style={{
       position: 'fixed',
       bottom: '100px',
       right: '20px',
@@ -710,11 +712,39 @@ const CalendarPage = () => {
   );
 };
 
-const StatsPage = () => (
+const StatsPage = () => {
+  const [showStatsModal, setShowStatsModal] = useState(false);
+  const [matchTitle, setMatchTitle] = useState('');
+  const [matchDate, setMatchDate] = useState('');
+  const [hasVideo, setHasVideo] = useState(false);
+  const [hasStats, setHasStats] = useState(false);
+
+  const handleNewStatsClick = () => {
+    setMatchTitle('');
+    setMatchDate('');
+    setHasVideo(false);
+    setHasStats(false);
+    setShowStatsModal(true);
+  };
+
+  const saveStats = () => {
+    // Here you would normally save to state/API
+    console.log('Saving stats:', {
+      title: matchTitle,
+      date: matchDate,
+      hasVideo,
+      hasStats
+    });
+    setShowStatsModal(false);
+  };
+
+  return (
   <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
       <h2 style={{ color: '#3C8DBC', margin: '0', fontSize: '24px', fontWeight: 'bold' }}>スタッツ</h2>
-      <button style={{
+      <button 
+        onClick={handleNewStatsClick}
+        style={{
         backgroundColor: '#3C8DBC',
         color: '#FBF9FA',
         border: 'none',
@@ -964,8 +994,192 @@ const StatsPage = () => (
       </div>
 
     </div>
+
+    {/* Stats Registration Modal */}
+    {showStatsModal && (
+      <div style={{
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1000,
+        padding: '20px'
+      }}>
+        <div style={{
+          backgroundColor: '#031C32',
+          borderRadius: '16px',
+          padding: '24px',
+          width: '100%',
+          maxWidth: '400px'
+        }}>
+          <h3 style={{
+            margin: '0 0 20px 0',
+            color: '#FBF9FA',
+            fontSize: '18px',
+            fontWeight: 'bold'
+          }}>
+            新しい試合を登録
+          </h3>
+
+          <div style={{ marginBottom: '16px' }}>
+            <label style={{
+              display: 'block',
+              marginBottom: '8px',
+              color: '#FBF9FA',
+              fontSize: '14px'
+            }}>
+              試合タイトル:
+            </label>
+            <input
+              type="text"
+              value={matchTitle}
+              onChange={(e) => setMatchTitle(e.target.value)}
+              placeholder="vs チーム名"
+              style={{
+                width: '100%',
+                padding: '12px',
+                backgroundColor: '#FBF9FA',
+                border: 'none',
+                borderRadius: '8px',
+                fontSize: '14px',
+                color: '#02070D',
+                boxSizing: 'border-box'
+              }}
+            />
+          </div>
+
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{
+              display: 'block',
+              marginBottom: '8px',
+              color: '#FBF9FA',
+              fontSize: '14px'
+            }}>
+              試合日:
+            </label>
+            <input
+              type="date"
+              value={matchDate}
+              onChange={(e) => setMatchDate(e.target.value)}
+              min="2025-07-01"
+              max="2025-12-31"
+              style={{
+                width: '100%',
+                padding: '12px',
+                backgroundColor: '#FBF9FA',
+                border: 'none',
+                borderRadius: '8px',
+                fontSize: '14px',
+                color: '#02070D',
+                boxSizing: 'border-box'
+              }}
+            />
+          </div>
+
+          <div style={{ marginBottom: '20px' }}>
+            <h4 style={{
+              margin: '0 0 12px 0',
+              color: '#FBF9FA',
+              fontSize: '16px',
+              fontWeight: 'bold'
+            }}>登録する内容:</h4>
+            
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px'
+            }}>
+              <label style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: '#FBF9FA',
+                cursor: 'pointer'
+              }}>
+                <input
+                  type="checkbox"
+                  checked={hasVideo}
+                  onChange={(e) => setHasVideo(e.target.checked)}
+                  style={{
+                    width: '16px',
+                    height: '16px',
+                    accentColor: '#3C8DBC'
+                  }}
+                />
+                <img src="/icon/icon12.svg" alt="動画" width="16" height="16" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
+                動画を登録
+              </label>
+              
+              <label style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                color: '#FBF9FA',
+                cursor: 'pointer'
+              }}>
+                <input
+                  type="checkbox"
+                  checked={hasStats}
+                  onChange={(e) => setHasStats(e.target.checked)}
+                  style={{
+                    width: '16px',
+                    height: '16px',
+                    accentColor: '#3C8DBC'
+                  }}
+                />
+                <img src="/icon/icon13.svg" alt="スタッツ" width="16" height="16" style={{ filter: 'invert(1)' }} />
+                スタッツを登録
+              </label>
+            </div>
+          </div>
+
+          <div style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            gap: '12px'
+          }}>
+            <button
+              onClick={() => setShowStatsModal(false)}
+              style={{
+                padding: '8px 16px',
+                backgroundColor: 'transparent',
+                border: '1px solid #6b7280',
+                borderRadius: '8px',
+                color: '#6b7280',
+                cursor: 'pointer',
+                fontSize: '14px'
+              }}
+            >
+              キャンセル
+            </button>
+            <button
+              onClick={saveStats}
+              disabled={!matchTitle || !matchDate || (!hasVideo && !hasStats)}
+              style={{
+                padding: '8px 16px',
+                backgroundColor: (!matchTitle || !matchDate || (!hasVideo && !hasStats)) ? '#6b7280' : '#3C8DBC',
+                border: 'none',
+                borderRadius: '8px',
+                color: '#FBF9FA',
+                cursor: (!matchTitle || !matchDate || (!hasVideo && !hasStats)) ? 'not-allowed' : 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold'
+              }}
+            >
+              登録
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
   </div>
-);
+  );
+};
 
 const AIBuddyPage = () => (
   <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
