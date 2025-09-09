@@ -1500,7 +1500,7 @@ const ChatPage = ({ agentType, onBack }) => {
         overflowY: 'auto',
         boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
         backgroundImage: 'url(/Agent1.png)',
-        backgroundSize: '200px 200px',
+        backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center',
         position: 'relative'
@@ -1753,7 +1753,11 @@ function App() {
           {navigation.map((item) => (
             <button
               key={item.id}
-              onClick={() => setCurrentPage(item.id)}
+              onClick={() => {
+                setCurrentPage(item.id);
+                setShowChat(false);
+                setSelectedAgent(null);
+              }}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
