@@ -712,7 +712,7 @@ const CalendarPage = () => {
   );
 };
 
-const StatsPage = () => {
+const StatsPage = ({ onStatsDetailOpen }) => {
   const [showStatsModal, setShowStatsModal] = useState(false);
   const [matchTitle, setMatchTitle] = useState('');
   const [matchDate, setMatchDate] = useState('');
@@ -824,7 +824,9 @@ const StatsPage = () => {
               marginBottom: '8px',
               fontWeight: 'bold'
             }}>スタッツ</div>
-            <div style={{
+            <div 
+              onClick={() => onStatsDetailOpen(1)}
+              style={{
               width: '80px',
               height: '60px',
               backgroundColor: '#FBF9FA',
@@ -899,7 +901,9 @@ const StatsPage = () => {
               marginBottom: '8px',
               fontWeight: 'bold'
             }}>スタッツ</div>
-            <div style={{
+            <div 
+              onClick={() => onStatsDetailOpen(2)}
+              style={{
               width: '80px',
               height: '60px',
               backgroundColor: '#FBF9FA',
@@ -974,7 +978,9 @@ const StatsPage = () => {
               marginBottom: '8px',
               fontWeight: 'bold'
             }}>スタッツ</div>
-            <div style={{
+            <div 
+              onClick={() => onStatsDetailOpen(3)}
+              style={{
               width: '80px',
               height: '60px',
               backgroundColor: '#FBF9FA',
@@ -1178,6 +1184,215 @@ const StatsPage = () => {
       </div>
     )}
   </div>
+  );
+};
+
+// スタッツ詳細ページのコンポーネント
+const StatsDetailPage = ({ cardId, onBack }) => {
+  const [activeTab, setActiveTab] = useState('attack');
+  const [statsData, setStatsData] = useState(null);
+
+  useEffect(() => {
+    // JSONデータを読み込み
+    fetch('/data/stats.json')
+      .then(response => response.json())
+      .then(data => setStatsData(data))
+      .catch(error => console.error('Error loading stats data:', error));
+  }, []);
+
+  const tabs = [
+    { id: 'attack', label: 'Attack', color: '#ff4444' },
+    { id: 'defense', label: 'Defense', color: '#4444ff' },
+    { id: 'passing', label: 'Passing', color: '#44ff44' },
+    { id: 'physics', label: 'Physics', color: '#ff8844' }
+  ];
+
+  const getStatLabels = (category) => {
+    switch (category) {
+      case 'attack':
+        return {
+          goals: 'Goals（得点）',
+          shotsOnTarget: 'Shots on Target（枠内シュート）',
+          assists: 'Assists（アシスト）',
+          keyPasses: 'Key Passes（決定機パス）',
+          dribblesCompleted: 'Dribbles Completed（ドリブル成功）'
+        };
+      case 'defense':
+        return {
+          tacklesWon: 'Tackles Won（タックル成功）',
+          interceptions: 'Interceptions（インターセプト）',
+          clearances: 'Clearances（クリア数）',
+          blocks: 'Blocks（シュートブロック）',
+          aerialDuelsWon: 'Aerial Duels Won（空中戦勝利）'
+        };
+      case 'passing':
+        return {
+          passAccuracyPct: 'Pass Accuracy %（パス成功率）',
+          totalPasses: 'Total Passes（総パス数）',
+          longPassAccuracyPct: 'Long Pass Accuracy %（ロングパス成功率）',
+          crossesCompleted: 'Crosses Completed（クロス成功数）',
+          throughBalls: 'Through Balls（スルーパス）'
+        };
+      case 'physics':
+        return {
+          distanceKm: 'Distance Covered (km)（走行距離）',
+          sprints: 'Sprints（スプリント数）',
+          duelsWon: 'Duels Won（1対1勝利数）',
+          foulsCommitted: 'Fouls Committed（反則）',
+          foulsSuffered: 'Fouls Suffered（被ファウル）'
+        };
+      default:
+        return {};
+    }
+  };
+
+  const formatStatValue = (key, value) => {
+    if (key.includes('Pct') || key.includes('Accuracy')) {
+      return `${value}%`;
+    }
+    if (key === 'distanceKm') {
+      return `${value} km`;
+    }
+    return value;
+  };
+
+  if (!statsData) {
+    return (
+      <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
+        <div style={{ textAlign: 'center', color: '#3C8DBC', marginTop: '100px' }}>
+          Loading...
+        </div>
+      </div>
+    );
+  }
+
+  const currentStats = statsData[activeTab] || [];
+
+  return (
+    <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
+      {/* ヘッダー */}
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        marginBottom: '20px',
+        paddingBottom: '16px',
+        borderBottom: '1px solid #031C32'
+      }}>
+        <button 
+          onClick={onBack}
+          style={{
+            backgroundColor: 'transparent',
+            border: 'none',
+            color: '#3C8DBC',
+            fontSize: '20px',
+            cursor: 'pointer',
+            marginRight: '16px'
+          }}
+        >←</button>
+        <h2 style={{ 
+          color: '#FBF9FA', 
+          margin: 0, 
+          fontSize: '20px', 
+          fontWeight: 'bold' 
+        }}>スタッツ詳細 - Card {cardId}</h2>
+      </div>
+
+      {/* タブナビゲーション */}
+      <div style={{
+        display: 'flex',
+        marginBottom: '20px',
+        backgroundColor: '#031C32',
+        borderRadius: '12px',
+        padding: '4px'
+      }}>
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            style={{
+              flex: 1,
+              padding: '12px 8px',
+              backgroundColor: activeTab === tab.id ? tab.color : 'transparent',
+              color: activeTab === tab.id ? 'white' : '#3C8DBC',
+              border: 'none',
+              borderRadius: '8px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* スタッツコンテンツ */}
+      <div style={{
+        backgroundColor: '#031C32',
+        borderRadius: '16px',
+        padding: '20px'
+      }}>
+        <h3 style={{
+          color: tabs.find(t => t.id === activeTab)?.color || '#FBF9FA',
+          marginBottom: '20px',
+          fontSize: '18px',
+          fontWeight: 'bold'
+        }}>
+          {tabs.find(t => t.id === activeTab)?.label} Stats
+        </h3>
+
+        {currentStats.map((player, index) => (
+          <div key={player.playerId} style={{
+            backgroundColor: '#00385B',
+            borderRadius: '12px',
+            padding: '16px',
+            marginBottom: '16px'
+          }}>
+            <h4 style={{
+              color: '#FBF9FA',
+              marginBottom: '12px',
+              fontSize: '16px',
+              fontWeight: 'bold'
+            }}>
+              {player.playerName}
+            </h4>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '12px'
+            }}>
+              {Object.entries(getStatLabels(activeTab)).map(([key, label]) => (
+                <div key={key} style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '8px 12px',
+                  backgroundColor: '#031C32',
+                  borderRadius: '8px'
+                }}>
+                  <span style={{
+                    color: '#3C8DBC',
+                    fontSize: '12px',
+                    flex: 1
+                  }}>
+                    {label}
+                  </span>
+                  <span style={{
+                    color: '#FBF9FA',
+                    fontSize: '14px',
+                    fontWeight: 'bold'
+                  }}>
+                    {formatStatValue(key, player[key] || 0)}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
@@ -1659,6 +1874,8 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedAgent, setSelectedAgent] = useState(null);
   const [showChat, setShowChat] = useState(false);
+  const [showStatsDetail, setShowStatsDetail] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null);
 
   const navigation = [
     { id: 'calendar', label: 'カレンダー', iconPath: '/icon/icon3.svg' },
@@ -1678,7 +1895,22 @@ function App() {
     setSelectedAgent(null);
   };
 
+  const handleStatsDetailOpen = (cardId) => {
+    setSelectedCard(cardId);
+    setShowStatsDetail(true);
+  };
+
+  const handleBackFromStatsDetail = () => {
+    setShowStatsDetail(false);
+    setSelectedCard(null);
+  };
+
   const renderPage = () => {
+    // スタッツ詳細画面が開いている場合
+    if (showStatsDetail && selectedCard) {
+      return <StatsDetailPage cardId={selectedCard} onBack={handleBackFromStatsDetail} />;
+    }
+    
     // チャット画面が開いている場合
     if (showChat && selectedAgent) {
       return <ChatPage agentType={selectedAgent} onBack={handleBackFromChat} />;
@@ -1687,7 +1919,7 @@ function App() {
     switch (currentPage) {
       case 'home': return <HomePage />;
       case 'calendar': return <CalendarPage />;
-      case 'stats': return <StatsPage />;
+      case 'stats': return <StatsPage onStatsDetailOpen={handleStatsDetailOpen} />;
       case 'ai-buddy': return <AIBuddyPage onAgentSelect={handleAgentSelect} />;
       case 'support': return <SupportPage />;
       default: return <HomePage />;
@@ -1757,6 +1989,8 @@ function App() {
                 setCurrentPage(item.id);
                 setShowChat(false);
                 setSelectedAgent(null);
+                setShowStatsDetail(false);
+                setSelectedCard(null);
               }}
               style={{
                 display: 'flex',
