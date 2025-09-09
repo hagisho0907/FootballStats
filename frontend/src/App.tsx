@@ -421,11 +421,11 @@ const StatsPage = () => (
         </div>
       </div>
 
-      {/* Match 2 - Default border */}
+      {/* Match 2 - Active border */}
       <div style={{
         backgroundColor: '#031C32',
         borderRadius: '12px',
-        border: '2px solid #3C8DBC',
+        border: '2px solid #24A0FF',
         padding: '20px',
         boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
       }}>
@@ -492,11 +492,11 @@ const StatsPage = () => (
         </div>
       </div>
 
-      {/* Match 3 - Subtle border */}
+      {/* Match 3 - Active border */}
       <div style={{
         backgroundColor: '#031C32',
         borderRadius: '12px',
-        border: '2px solid #00385B',
+        border: '2px solid #24A0FF',
         padding: '20px',
         boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
       }}>
@@ -506,7 +506,7 @@ const StatsPage = () => (
             fontSize: '16px',
             fontWeight: 'bold',
             color: '#FBF9FA'
-          }}>2025/8/25 VS FC東京</h3>
+          }}>2025/8/25 VS FC東京ユース</h3>
         </div>
 
         <div style={{
