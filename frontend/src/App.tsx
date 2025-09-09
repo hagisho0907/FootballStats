@@ -1408,6 +1408,16 @@ const ChatPage = ({ agentType, onBack }) => {
 
   const currentAgent = agentInfo[agentType] || agentInfo['highlight'];
 
+  const getWelcomeMessage = (agentType) => {
+    const messages = {
+      'highlight': 'プレーハイライトについて一緒に分析しましょう！',
+      'tactics': 'チーム戦術について一緒に分析しましょう！', 
+      'stats': 'スタッツデータについて一緒に分析しましょう！',
+      'condition': 'コンディションについて一緒に分析しましょう！'
+    };
+    return messages[agentType] || messages['highlight'];
+  };
+
   const sendMessage = () => {
     if (inputMessage.trim()) {
       setMessages([...messages, 
@@ -1451,20 +1461,19 @@ const ChatPage = ({ agentType, onBack }) => {
           justifyContent: 'center',
           fontSize: '24px',
           marginRight: '16px',
-          boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
+          boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
+          overflow: 'hidden'
         }}>
-          <div style={{
-            width: '40px',
-            height: '40px',
-            borderRadius: '50%',
-            backgroundColor: 'white',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '20px'
-          }}>
-            🤖
-          </div>
+          <img 
+            src="/Agent1.png" 
+            alt="AI Agent" 
+            style={{
+              width: '42px',
+              height: '42px',
+              borderRadius: '50%',
+              objectFit: 'cover'
+            }}
+          />
         </div>
         
         <div>
@@ -1484,19 +1493,39 @@ const ChatPage = ({ agentType, onBack }) => {
 
       {/* チャットメッセージエリア */}
       <div style={{
-        backgroundColor: '#031C32',
         borderRadius: '16px',
-        padding: '20px',
         marginBottom: '20px',
         minHeight: '60vh',
         maxHeight: '60vh',
         overflowY: 'auto',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
+        backgroundImage: 'url(/Agent1.png)',
+        backgroundSize: '200px 200px',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center center',
+        position: 'relative'
       }}>
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(3, 28, 50, 0.85)',
+          borderRadius: '16px',
+          zIndex: 1
+        }}></div>
+        <div style={{
+          position: 'relative',
+          zIndex: 2,
+          padding: '20px'
+        }}>
         {messages.length === 0 ? (
           <div style={{ textAlign: 'center', color: '#3C8DBC', marginTop: '100px' }}>
-            <div style={{ fontSize: '48px', marginBottom: '16px' }}>💬</div>
-            <p>こんにちは！何について相談しますか？</p>
+            <div style={{ marginBottom: '16px' }}>
+              <img src="/icon/icon10.svg" alt="チャット" width="48" height="48" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
+            </div>
+            <p>{getWelcomeMessage(agentType)}</p>
           </div>
         ) : (
           messages.map((msg, index) => (
@@ -1516,8 +1545,19 @@ const ChatPage = ({ agentType, onBack }) => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginRight: '12px',
-                  fontSize: '16px'
-                }}>🤖</div>
+                  overflow: 'hidden'
+                }}>
+                  <img 
+                    src="/Agent1.png" 
+                    alt="AI Agent" 
+                    style={{
+                      width: '28px',
+                      height: '28px',
+                      borderRadius: '50%',
+                      objectFit: 'cover'
+                    }}
+                  />
+                </div>
               )}
               
               <div style={{
@@ -1547,6 +1587,7 @@ const ChatPage = ({ agentType, onBack }) => {
             </div>
           ))
         )}
+        </div>
       </div>
 
       {/* メッセージ入力エリア */}
