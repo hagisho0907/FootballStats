@@ -409,22 +409,22 @@ const StatsPage = () => (
 
       {/* Match 2 - Simple */}
       <div style={{
-        backgroundColor: 'white',
+        backgroundColor: '#031C32',
         borderRadius: '12px',
-        border: '2px solid #ef4444',
+        border: '2px solid #026ACB',
         padding: '20px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
       }}>
         <div style={{ textAlign: 'center' }}>
           <h3 style={{
             margin: '0 0 20px 0',
             fontSize: '16px',
             fontWeight: 'bold',
-            color: '#1f2937'
+            color: '#FBF9FA'
           }}>2025/9/1 VS 浅草FC</h3>
           <div style={{
             fontSize: '24px',
-            color: '#6b7280',
+            color: '#3C8DBC',
             fontWeight: 'normal'
           }}>同じもの</div>
         </div>
@@ -432,18 +432,18 @@ const StatsPage = () => (
 
       {/* Match 3 - Placeholder */}
       <div style={{
-        backgroundColor: 'white',
+        backgroundColor: '#031C32',
         borderRadius: '12px',
-        border: '1px solid #e5e7eb',
+        border: '1px solid #00385B',
         padding: '20px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
       }}>
         <div style={{ textAlign: 'center' }}>
           <h3 style={{
             margin: '0 0 20px 0',
             fontSize: '16px',
             fontWeight: 'bold',
-            color: '#9ca3af'
+            color: '#3C8DBC'
           }}>2025/8/25 VS FC東京</h3>
           <div style={{
             display: 'grid',
@@ -455,7 +455,7 @@ const StatsPage = () => (
               <div style={{
                 width: '60px',
                 height: '45px',
-                backgroundColor: '#f3f4f6',
+                backgroundColor: '#00385B',
                 borderRadius: '8px',
                 margin: '0 auto'
               }}></div>
@@ -464,7 +464,7 @@ const StatsPage = () => (
               <div style={{
                 width: '60px',
                 height: '45px',
-                backgroundColor: '#f3f4f6',
+                backgroundColor: '#00385B',
                 borderRadius: '8px',
                 margin: '0 auto'
               }}></div>
@@ -547,10 +547,10 @@ const AIBuddyPage = () => (
 
       {/* Team Tactics Agent */}
       <div style={{
-        backgroundColor: 'white',
+        backgroundColor: '#031C32',
         borderRadius: '16px',
         padding: '20px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
         textAlign: 'center',
         cursor: 'pointer',
         border: '2px solid transparent'
@@ -559,7 +559,7 @@ const AIBuddyPage = () => (
           width: '60px',
           height: '60px',
           borderRadius: '50%',
-          backgroundColor: '#dbeafe',
+          backgroundColor: '#026ACB',
           margin: '0 auto 12px auto',
           display: 'flex',
           alignItems: 'center',
@@ -570,21 +570,21 @@ const AIBuddyPage = () => (
           margin: '0 0 8px 0',
           fontSize: '14px',
           fontWeight: 'bold',
-          color: '#1f2937'
+          color: '#FBF9FA'
         }}>チーム戦術</h3>
         <p style={{
           margin: 0,
           fontSize: '12px',
-          color: '#6b7280'
+          color: '#3C8DBC'
         }}>映像・戦術振り返り</p>
       </div>
 
       {/* Stats Agent */}
       <div style={{
-        backgroundColor: 'white',
+        backgroundColor: '#031C32',
         borderRadius: '16px',
         padding: '20px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
         textAlign: 'center',
         cursor: 'pointer',
         border: '2px solid transparent'
@@ -593,7 +593,7 @@ const AIBuddyPage = () => (
           width: '60px',
           height: '60px',
           borderRadius: '50%',
-          backgroundColor: '#dcfce7',
+          backgroundColor: '#24A0FF',
           margin: '0 auto 12px auto',
           display: 'flex',
           alignItems: 'center',
@@ -604,21 +604,21 @@ const AIBuddyPage = () => (
           margin: '0 0 8px 0',
           fontSize: '14px',
           fontWeight: 'bold',
-          color: '#1f2937'
+          color: '#FBF9FA'
         }}>スタッツ分析</h3>
         <p style={{
           margin: 0,
           fontSize: '12px',
-          color: '#6b7280'
+          color: '#3C8DBC'
         }}>データ振り返り</p>
       </div>
 
       {/* Medical/Conditioning Agent */}
       <div style={{
-        backgroundColor: 'white',
+        backgroundColor: '#031C32',
         borderRadius: '16px',
         padding: '20px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
         textAlign: 'center',
         cursor: 'pointer',
         border: '2px solid transparent'
@@ -627,7 +627,7 @@ const AIBuddyPage = () => (
           width: '60px',
           height: '60px',
           borderRadius: '50%',
-          backgroundColor: '#fce7f3',
+          backgroundColor: '#3C8DBC',
           margin: '0 auto 12px auto',
           display: 'flex',
           alignItems: 'center',
@@ -638,12 +638,12 @@ const AIBuddyPage = () => (
           margin: '0 0 8px 0',
           fontSize: '14px',
           fontWeight: 'bold',
-          color: '#1f2937'
+          color: '#FBF9FA'
         }}>コンディション</h3>
         <p style={{
           margin: 0,
           fontSize: '12px',
-          color: '#6b7280'
+          color: '#3C8DBC'
         }}>メディカルチェック</p>
       </div>
 
