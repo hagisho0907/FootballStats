@@ -777,6 +777,11 @@ function App() {
     }}>
       {/* Header */}
       <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
         backgroundColor: '#02070D',
         color: '#FBF9FA',
         padding: '16px',
@@ -784,7 +789,7 @@ function App() {
         borderBottom: '1px solid #031C32'
       }}>
         <h1 style={{ margin: '0', fontSize: '24px', fontWeight: 'bold' }}>
-          footballLOG
+          FootballLOG
         </h1>
         <p style={{ margin: '4px 0 0 0', opacity: 0.9, fontSize: '14px' }}>
           Football Stats & Analytics
@@ -796,7 +801,8 @@ function App() {
         maxWidth: '448px',
         margin: '0 auto',
         backgroundColor: '#02070D',
-        minHeight: 'calc(100vh - 160px)'
+        minHeight: 'calc(100vh - 160px)',
+        paddingTop: '100px'
       }}>
         {renderPage()}
       </div>
