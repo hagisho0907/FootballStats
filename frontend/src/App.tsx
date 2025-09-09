@@ -384,13 +384,15 @@ const StatsPage = () => (
             <div style={{
               width: '80px',
               height: '60px',
-              backgroundColor: '#00385B',
+              backgroundColor: '#031C32',
               borderRadius: '8px',
               margin: '0 auto',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '24px'
+              fontSize: '24px',
+              cursor: 'pointer',
+              border: '1px solid #3C8DBC'
             }}>
               <img src="/icon/icon12.svg" alt="動画" width="24" height="24" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
             </div>
@@ -407,15 +409,17 @@ const StatsPage = () => (
             <div style={{
               width: '80px',
               height: '60px',
-              backgroundColor: '#026ACB',
+              backgroundColor: '#FBF9FA',
               borderRadius: '8px',
               margin: '0 auto',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              position: 'relative'
+              position: 'relative',
+              cursor: 'pointer',
+              border: '1px solid #3C8DBC'
             }}>
-              <img src="/icon/icon13.svg" alt="スタッツ" width="24" height="24" style={{ filter: 'invert(1)' }} />
+              <img src="/icon/icon13.svg" alt="スタッツ" width="24" height="24" style={{ filter: 'invert(0.2)' }} />
             </div>
           </div>
         </div>
@@ -455,13 +459,15 @@ const StatsPage = () => (
             <div style={{
               width: '80px',
               height: '60px',
-              backgroundColor: '#00385B',
+              backgroundColor: '#031C32',
               borderRadius: '8px',
               margin: '0 auto',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '24px'
+              fontSize: '24px',
+              cursor: 'pointer',
+              border: '1px solid #3C8DBC'
             }}>
               <img src="/icon/icon12.svg" alt="動画" width="24" height="24" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
             </div>
@@ -478,15 +484,17 @@ const StatsPage = () => (
             <div style={{
               width: '80px',
               height: '60px',
-              backgroundColor: '#026ACB',
+              backgroundColor: '#FBF9FA',
               borderRadius: '8px',
               margin: '0 auto',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              position: 'relative'
+              position: 'relative',
+              cursor: 'pointer',
+              border: '1px solid #3C8DBC'
             }}>
-              <img src="/icon/icon13.svg" alt="スタッツ" width="24" height="24" style={{ filter: 'invert(1)' }} />
+              <img src="/icon/icon13.svg" alt="スタッツ" width="24" height="24" style={{ filter: 'invert(0.2)' }} />
             </div>
           </div>
         </div>
@@ -526,13 +534,15 @@ const StatsPage = () => (
             <div style={{
               width: '80px',
               height: '60px',
-              backgroundColor: '#00385B',
+              backgroundColor: '#031C32',
               borderRadius: '8px',
               margin: '0 auto',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '24px'
+              fontSize: '24px',
+              cursor: 'pointer',
+              border: '1px solid #3C8DBC'
             }}>
               <img src="/icon/icon12.svg" alt="動画" width="24" height="24" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
             </div>
@@ -549,15 +559,17 @@ const StatsPage = () => (
             <div style={{
               width: '80px',
               height: '60px',
-              backgroundColor: '#026ACB',
+              backgroundColor: '#FBF9FA',
               borderRadius: '8px',
               margin: '0 auto',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              position: 'relative'
+              position: 'relative',
+              cursor: 'pointer',
+              border: '1px solid #3C8DBC'
             }}>
-              <img src="/icon/icon13.svg" alt="スタッツ" width="24" height="24" style={{ filter: 'invert(1)' }} />
+              <img src="/icon/icon13.svg" alt="スタッツ" width="24" height="24" style={{ filter: 'invert(0.2)' }} />
             </div>
           </div>
         </div>
