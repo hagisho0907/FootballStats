@@ -160,9 +160,10 @@ const CalendarPage = () => {
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
   const [showNoteModal, setShowNoteModal] = useState(false);
   const [noteText, setNoteText] = useState('');
+  const [newNoteDate, setNewNoteDate] = useState('');
   const [notes, setNotes] = useState<{[key: string]: string}>({
     '2025-9-8': 'vs TOKYO UNITED 試合反省',
-    '2025-9-12': '練習メモ - パス精度向上'
+    '2025-9-1': 'トラップは命'
   });
 
   const monthNames = ['', 'January', 'February', 'March', 'April', 'May', 'June', 
@@ -184,10 +185,19 @@ const CalendarPage = () => {
   };
 
   const saveNote = () => {
-    const noteKey = `${currentYear}-${currentMonth}-${selectedDate}`;
+    let noteKey;
+    if (selectedDate) {
+      // Saving from calendar date click
+      noteKey = `${currentYear}-${currentMonth}-${selectedDate}`;
+    } else {
+      // Saving from new note button with custom date
+      noteKey = newNoteDate;
+    }
+    
     if (noteText.trim()) {
       setNotes({...notes, [noteKey]: noteText});
-    } else {
+    } else if (selectedDate) {
+      // Only delete if it's an existing note from calendar
       const newNotes = {...notes};
       delete newNotes[noteKey];
       setNotes(newNotes);
@@ -195,6 +205,22 @@ const CalendarPage = () => {
     setShowNoteModal(false);
     setNoteText('');
     setSelectedDate(null);
+    setNewNoteDate('');
+  };
+
+  const handleNewNoteClick = () => {
+    setSelectedDate(null);
+    setNoteText('');
+    setNewNoteDate(`${currentYear}-${currentMonth}-${new Date().getDate()}`);
+    setShowNoteModal(true);
+  };
+
+  const handleNoteCardClick = (dateKey: string) => {
+    const [year, month, day] = dateKey.split('-');
+    setSelectedDate(parseInt(day));
+    setCurrentMonth(parseInt(month));
+    setNoteText(notes[dateKey]);
+    setShowNoteModal(true);
   };
 
   const navigateMonth = (direction: number) => {
@@ -261,7 +287,9 @@ const CalendarPage = () => {
           fontStyle: 'italic',
           color: '#3C8DBC'
         }}>Calendar</h2>
-        <button style={{
+        <button 
+          onClick={handleNewNoteClick}
+          style={{
           backgroundColor: '#3C8DBC',
           color: '#FBF9FA',
           border: 'none',
@@ -424,8 +452,43 @@ const CalendarPage = () => {
             fontSize: '18px',
             fontWeight: 'bold'
           }}>
-            {currentYear}/{currentMonth}/{selectedDate} のノート
+            {selectedDate ? 
+              `${currentYear}/${currentMonth}/${selectedDate} のノート` : 
+              '新しいノート'
+            }
           </h3>
+          
+          {!selectedDate && (
+            <div style={{
+              marginBottom: '16px'
+            }}>
+              <label style={{
+                display: 'block',
+                marginBottom: '8px',
+                color: '#FBF9FA',
+                fontSize: '14px'
+              }}>
+                日付を選択:
+              </label>
+              <input
+                type="date"
+                value={newNoteDate ? newNoteDate.split('-').join('-') : ''}
+                onChange={(e) => setNewNoteDate(e.target.value.split('-').join('-'))}
+                min={`${currentYear}-07-01`}
+                max={`${currentYear}-12-31`}
+                style={{
+                  width: '100%',
+                  padding: '8px 12px',
+                  backgroundColor: '#FBF9FA',
+                  border: 'none',
+                  borderRadius: '6px',
+                  fontSize: '14px',
+                  color: '#02070D',
+                  boxSizing: 'border-box'
+                }}
+              />
+            </div>
+          )}
           
           <textarea
             value={noteText}
@@ -537,7 +600,9 @@ const CalendarPage = () => {
             fontStyle: 'italic',
             color: '#3C8DBC'
           }}>Notes</h2>
-          <button style={{
+          <button 
+            onClick={handleNewNoteClick}
+            style={{
             backgroundColor: '#3C8DBC',
             color: '#FBF9FA',
             border: 'none',
@@ -578,11 +643,18 @@ const CalendarPage = () => {
                 .map(([dateKey, note]) => {
                   const [year, month, day] = dateKey.split('-');
                   return (
-                    <div key={dateKey} style={{
+                    <div 
+                      key={dateKey} 
+                      onClick={() => handleNoteCardClick(dateKey)}
+                      style={{
                       padding: '12px',
                       backgroundColor: '#00385B',
                       borderRadius: '8px',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      transition: 'backgroundColor 0.2s ease',
+                      '&:hover': {
+                        backgroundColor: '#026ACB'
+                      }
                     }}>
                       <div style={{
                         fontSize: '14px',
