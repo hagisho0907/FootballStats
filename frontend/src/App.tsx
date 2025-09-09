@@ -1715,7 +1715,7 @@ function App() {
         borderBottom: '1px solid #031C32'
       }}>
         <h1 style={{ margin: '0', fontSize: '24px', fontWeight: 'bold' }}>
-          Football LOG
+          Football Score
         </h1>
         <p style={{ margin: '4px 0 0 0', opacity: 0.9, fontSize: '14px' }}>
           Football Stats & Analytics

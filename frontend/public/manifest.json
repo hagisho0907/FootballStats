@@ -1,6 +1,6 @@
 {
-  "name": "Football LOG",
-  "short_name": "Football LOG",
+  "name": "Football Score",
+  "short_name": "Football Score",
   "description": "子供のサッカーのスタッツやサッカーノートを記録、管理するアプリ",
   "start_url": "/",
   "display": "standalone",
