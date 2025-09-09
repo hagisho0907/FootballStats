@@ -766,11 +766,11 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
   const navigation = [
-    { id: 'calendar', label: 'カレンダー', iconPath: '/icon3.svg' },
-    { id: 'stats', label: 'スタッツ', iconPath: '/icon2.svg' },
-    { id: 'home', label: 'ホーム', iconPath: '/icon1.svg' },
-    { id: 'ai-buddy', label: 'AIバディ', iconPath: '/icon4.svg' },
-    { id: 'support', label: 'サポート', iconPath: '/icon5.svg' }
+    { id: 'calendar', label: 'カレンダー', iconPath: '/icon/icon3.svg' },
+    { id: 'stats', label: 'スタッツ', iconPath: '/icon/icon2.svg' },
+    { id: 'home', label: 'ホーム', iconPath: '/icon/icon1.svg' },
+    { id: 'ai-buddy', label: 'AIバディ', iconPath: '/icon/icon4.svg' },
+    { id: 'support', label: 'サポート', iconPath: '/icon/icon5.svg' }
   ];
 
   const renderPage = () => {
