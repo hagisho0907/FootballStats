@@ -49,88 +49,104 @@ const HomePage = () => (
       </div>
     </div>
 
-    {/* Stats Section with Tab Navigation - matching image2.png red box */}
-    <div style={{
-      backgroundColor: '#031C32',
-      borderRadius: '16px 16px 0 0',
-      padding: '20px',
-      margin: '0 20px'
-    }}>
-      {/* Tab Navigation */}
-      <div style={{ display: 'flex', marginBottom: '20px' }}>
-        {[
-          { name: 'Attack', color: '#3C8DBC', active: true },
-          { name: 'Defense', color: '#FBF9FA', active: false },
-          { name: 'Passing', color: '#FBF9FA', active: false },
-          { name: 'Physical', color: '#FBF9FA', active: false }
-        ].map((tab, index) => (
-          <button key={tab.name} style={{
-            padding: '8px 16px',
-            backgroundColor: 'transparent',
-            color: tab.color,
-            border: 'none',
-            borderBottom: tab.active ? `2px solid ${tab.color}` : '2px solid transparent',
-            marginRight: '8px',
-            fontSize: '14px',
-            cursor: 'pointer',
-            fontWeight: tab.active ? 'bold' : 'normal'
-          }}>
-            {tab.name}
-          </button>
-        ))}
-      </div>
-
-      {/* Attack Stats */}
-      <div style={{ marginBottom: '24px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
-          <div>
-            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#FBF9FA' }}>48</div>
-            <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Shots</div>
+    {/* Dashboard Cards Section - matching image1.png */}
+    <div style={{ padding: '0 16px 20px 16px' }}>
+      {/* Today's Condition Card */}
+      <div style={{
+        backgroundColor: '#031C32',
+        borderRadius: '16px',
+        padding: '20px',
+        marginBottom: '16px'
+      }}>
+        <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', fontWeight: 'bold', color: '#FBF9FA' }}>今日のコンディション</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
+              <span style={{ fontSize: '20px' }}>🌙</span>
+              <span style={{ color: '#FBF9FA' }}>睡眠</span>
+            </span>
+            <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>7.2 時間</span>
           </div>
-          <div>
-            <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#FBF9FA' }}>23</div>
-            <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Shots on Target</div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
+              <span style={{ fontSize: '20px' }}>⚖️</span>
+              <span style={{ color: '#FBF9FA' }}>体重</span>
+            </span>
+            <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>65.4 kg</span>
           </div>
-          <div>
-            <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#FBF9FA' }}>72.5%</div>
-            <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Dribble Succ.</div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
+              <span style={{ fontSize: '20px' }}>💚</span>
+              <span style={{ color: '#FBF9FA' }}>HRV</span>
+            </span>
+            <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>良好</span>
           </div>
         </div>
       </div>
 
-      {/* Additional Stats Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', marginBottom: '20px' }}>
-        <div>
-          <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#FBF9FA' }}>20</div>
-          <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Key Pass</div>
-        </div>
-        <div>
-          <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#FBF9FA' }}>4</div>
-          <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Assists</div>
+      {/* Performance Highlights Card */}
+      <div style={{
+        backgroundColor: '#031C32',
+        borderRadius: '16px',
+        padding: '20px',
+        marginBottom: '16px'
+      }}>
+        <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', fontWeight: 'bold', color: '#FBF9FA' }}>パフォーマンスハイライト</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
+              <span style={{ fontSize: '20px' }}>🏃</span>
+              <span style={{ color: '#FBF9FA' }}>週間</span>
+            </span>
+            <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>12 h</span>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
+              <span style={{ fontSize: '20px' }}>📍</span>
+              <span style={{ color: '#FBF9FA' }}>移行サート</span>
+            </span>
+            <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>35.2 km</span>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
+              <span style={{ fontSize: '20px' }}>⚽</span>
+              <span style={{ color: '#FBF9FA' }}>試合スタッシ</span>
+            </span>
+            <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>2G / 1A</span>
+          </div>
         </div>
       </div>
 
-      {/* Passing Direction Chart */}
-      <div style={{ marginTop: '20px' }}>
-        <h4 style={{ color: '#FBF9FA', margin: '0 0 12px 0' }}>Passing Direction</h4>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '8px',
-          textAlign: 'center'
-        }}>
-          <div>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#24A0FF' }}>43%</div>
-            <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Forward</div>
+      {/* Schedule Card */}
+      <div style={{
+        backgroundColor: '#031C32',
+        borderRadius: '16px',
+        padding: '20px',
+        marginBottom: '16px'
+      }}>
+        <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', fontWeight: 'bold', color: '#FBF9FA' }}>予定</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <span style={{ fontSize: '20px' }}>📅</span>
+            <span style={{ color: '#FBF9FA' }}>9/10(火) 18:00 て〜</span>
           </div>
-          <div>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#026ACB' }}>37%</div>
-            <div style={{ fontSize: '12px', color: '#3C8DBC' }}>Backward</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <span style={{ fontSize: '20px' }}>⏰</span>
+            <span style={{ color: '#FBF9FA' }}>9/12(木) vs ○○高校</span>
           </div>
-          <div>
-            <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#00385B' }}>20%</div>
-            <div style={{ fontSize: '12px', color: '#3C8DBC' }}>HL</div>
-          </div>
+        </div>
+      </div>
+
+      {/* Coaching Feed Card */}
+      <div style={{
+        backgroundColor: '#031C32',
+        borderRadius: '16px',
+        padding: '20px'
+      }}>
+        <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', fontWeight: 'bold', color: '#FBF9FA' }}>コーチングフィード</h3>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span style={{ fontSize: '20px' }}>💬</span>
+          <span style={{ color: '#FBF9FA' }}>フィードバックあり (新着3件)</span>
         </div>
       </div>
     </div>
@@ -789,7 +805,7 @@ function App() {
         borderBottom: '1px solid #031C32'
       }}>
         <h1 style={{ margin: '0', fontSize: '24px', fontWeight: 'bold' }}>
-          FootballLOG
+          Football LOG
         </h1>
         <p style={{ margin: '4px 0 0 0', opacity: 0.9, fontSize: '14px' }}>
           Football Stats & Analytics
