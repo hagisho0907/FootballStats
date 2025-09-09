@@ -153,7 +153,10 @@ const HomePage = () => (
   </div>
 );
 
-const CalendarPage = () => (
+const CalendarPage = () => {
+  const [activeTab, setActiveTab] = useState('calendar');
+
+  return (
   <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '0' }}>
     {/* Tab Navigation */}
     <div style={{
@@ -161,38 +164,48 @@ const CalendarPage = () => (
       backgroundColor: '#02070D',
       borderBottom: '1px solid #031C32'
     }}>
-      <button style={{
+      <button 
+        onClick={() => setActiveTab('calendar')}
+        style={{
         flex: 1,
         padding: '16px',
         backgroundColor: 'transparent',
         border: 'none',
-        borderBottom: '3px solid #3C8DBC',
-        color: '#3C8DBC',
-        fontWeight: 'bold',
-        fontSize: '16px'
+        borderBottom: activeTab === 'calendar' ? '3px solid #3C8DBC' : '3px solid transparent',
+        color: activeTab === 'calendar' ? '#3C8DBC' : '#FBF9FA',
+        fontWeight: activeTab === 'calendar' ? 'bold' : 'normal',
+        fontSize: '16px',
+        cursor: 'pointer'
       }}>
         カレンダー
       </button>
-      <button style={{
+      <button 
+        onClick={() => setActiveTab('notes')}
+        style={{
         flex: 1,
         padding: '16px',
         backgroundColor: 'transparent',
         border: 'none',
-        borderBottom: '3px solid transparent',
-        color: '#FBF9FA',
-        fontSize: '16px'
+        borderBottom: activeTab === 'notes' ? '3px solid #3C8DBC' : '3px solid transparent',
+        color: activeTab === 'notes' ? '#3C8DBC' : '#FBF9FA',
+        fontWeight: activeTab === 'notes' ? 'bold' : 'normal',
+        fontSize: '16px',
+        cursor: 'pointer'
       }}>
         サッカーノート
       </button>
     </div>
 
+    {/* Tab Content */}
+    {activeTab === 'calendar' && (
+    <>
     {/* Calendar Header */}
     <div style={{ padding: '20px', backgroundColor: '#02070D' }}>
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: '20px'
+        marginBottom: '40px'
       }}>
         <h2 style={{
           margin: 0,
@@ -205,12 +218,13 @@ const CalendarPage = () => (
           color: '#FBF9FA',
           border: 'none',
           borderRadius: '25px',
-          padding: '12px 24px',
+          padding: '12px 20px',
           fontSize: '14px',
           fontWeight: 'bold',
+          cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
-          gap: '8px'
+          gap: '6px'
         }}>
           + 新しいノート
         </button>
@@ -221,23 +235,27 @@ const CalendarPage = () => (
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: '20px'
+        marginBottom: '30px'
       }}>
         <button style={{
           background: 'none',
           border: 'none',
-          fontSize: '24px',
-          color: '#3C8DBC'
+          fontSize: '32px',
+          color: '#3C8DBC',
+          cursor: 'pointer',
+          padding: '8px'
         }}>‹</button>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '36px', color: '#3C8DBC', fontWeight: 'bold' }}>09</div>
-          <div style={{ fontSize: '18px', color: '#3C8DBC' }}>2025</div>
+          <div style={{ fontSize: '48px', color: '#3C8DBC', fontWeight: 'bold', margin: '0' }}>09</div>
+          <div style={{ fontSize: '20px', color: '#3C8DBC', margin: '0' }}>2025</div>
         </div>
         <button style={{
           background: 'none',
           border: 'none',
-          fontSize: '24px',
-          color: '#3C8DBC'
+          fontSize: '32px',
+          color: '#3C8DBC',
+          cursor: 'pointer',
+          padding: '8px'
         }}>›</button>
       </div>
     </div>
@@ -301,6 +319,86 @@ const CalendarPage = () => (
         }}>2025・09</h3>
       </div>
     </div>
+    </>
+    )}
+
+    {/* Soccer Notes Tab Content */}
+    {activeTab === 'notes' && (
+      <div style={{ backgroundColor: '#02070D', padding: '20px' }}>
+        {/* Search Bar */}
+        <div style={{
+          position: 'relative',
+          marginBottom: '20px'
+        }}>
+          <input
+            placeholder="検索キーワード"
+            style={{
+              width: '100%',
+              padding: '16px 50px 16px 50px',
+              backgroundColor: '#FBF9FA',
+              border: 'none',
+              borderRadius: '25px',
+              fontSize: '16px',
+              color: '#02070D',
+              boxSizing: 'border-box'
+            }}
+          />
+          <div style={{
+            position: 'absolute',
+            left: '16px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            fontSize: '20px',
+            color: '#6b7280'
+          }}>🔍</div>
+          <div style={{
+            position: 'absolute',
+            right: '16px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            fontSize: '20px',
+            color: '#6b7280',
+            cursor: 'pointer'
+          }}>✕</div>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+          <h2 style={{
+            margin: '0',
+            fontSize: '36px',
+            fontStyle: 'italic',
+            color: '#3C8DBC'
+          }}>Notes</h2>
+          <button style={{
+            backgroundColor: '#3C8DBC',
+            color: '#FBF9FA',
+            border: 'none',
+            borderRadius: '25px',
+            padding: '12px 20px',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px'
+          }}>
+            + 新しいノート
+          </button>
+        </div>
+        
+        {/* Empty State Message */}
+        <div style={{
+          textAlign: 'center',
+          marginTop: '80px'
+        }}>
+          <p style={{
+            fontSize: '18px',
+            color: '#6b7280',
+            margin: '0'
+          }}>サッカーノートを記録しよう</p>
+        </div>
+      </div>
+    )}
 
     {/* Floating Action Button */}
     <button style={{
@@ -320,7 +418,8 @@ const CalendarPage = () => (
       +
     </button>
   </div>
-);
+  );
+};
 
 const StatsPage = () => (
   <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
@@ -439,7 +538,7 @@ const StatsPage = () => (
             fontSize: '16px',
             fontWeight: 'bold',
             color: '#FBF9FA'
-          }}>2025/9/1 VS 浅草FC</h3>
+          }}>2025/9/1 vs 浅草FC</h3>
         </div>
 
         <div style={{
@@ -514,7 +613,7 @@ const StatsPage = () => (
             fontSize: '16px',
             fontWeight: 'bold',
             color: '#FBF9FA'
-          }}>2025/8/25 VS FC東京ユース</h3>
+          }}>2025/8/25 vs FC東京ユース</h3>
         </div>
 
         <div style={{
