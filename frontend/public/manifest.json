@@ -1,0 +1,20 @@
+{
+  "name": "FootballStats",
+  "short_name": "FootballStats",
+  "description": "子供のサッカーのスタッツやサッカーノートを記録、管理するアプリ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#22c55e",
+  "orientation": "portrait-primary",
+  "categories": ["sports", "productivity"],
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
