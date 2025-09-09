@@ -505,18 +505,18 @@ const StatsPage = () => (
 );
 
 const AIBuddyPage = () => (
-  <div style={{ backgroundColor: '#f5f5f5', minHeight: '100vh', padding: '20px' }}>
-    <h2 style={{ color: '#059669', marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>AIバディ</h2>
+  <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
+    <h2 style={{ color: '#3C8DBC', marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>AIバディ</h2>
     
     {/* AI Agent Selection */}
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', marginBottom: '30px' }}>
       
       {/* Personal Highlight Agent */}
       <div style={{
-        backgroundColor: 'white',
+        backgroundColor: '#031C32',
         borderRadius: '16px',
         padding: '20px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
         textAlign: 'center',
         cursor: 'pointer',
         border: '2px solid transparent'
@@ -525,7 +525,7 @@ const AIBuddyPage = () => (
           width: '60px',
           height: '60px',
           borderRadius: '50%',
-          backgroundColor: '#fef3c7',
+          backgroundColor: '#00385B',
           margin: '0 auto 12px auto',
           display: 'flex',
           alignItems: 'center',
@@ -536,12 +536,12 @@ const AIBuddyPage = () => (
           margin: '0 0 8px 0',
           fontSize: '14px',
           fontWeight: 'bold',
-          color: '#1f2937'
+          color: '#FBF9FA'
         }}>プレーハイライト</h3>
         <p style={{
           margin: 0,
           fontSize: '12px',
-          color: '#6b7280'
+          color: '#3C8DBC'
         }}>個人プレー分析</p>
       </div>
 
@@ -730,18 +730,18 @@ const AIBuddyPage = () => (
 );
 
 const SupportPage = () => (
-  <div style={{ padding: '20px' }}>
-    <h2 style={{ color: '#059669', marginBottom: '16px' }}>サポート</h2>
+  <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
+    <h2 style={{ color: '#3C8DBC', marginBottom: '16px', fontSize: '24px', fontWeight: 'bold' }}>サポート</h2>
     <div style={{
-      backgroundColor: 'white',
+      backgroundColor: '#031C32',
       padding: '20px',
       borderRadius: '12px',
-      boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+      boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
       marginBottom: '16px',
       textAlign: 'center'
     }}>
-      <h3 style={{ color: '#eab308', fontSize: '24px' }}>開発中</h3>
-      <p style={{ color: '#6b7280' }}>このページは現在開発中です</p>
+      <h3 style={{ color: '#24A0FF', fontSize: '24px' }}>開発中</h3>
+      <p style={{ color: '#3C8DBC' }}>このページは現在開発中です</p>
     </div>
   </div>
 );
