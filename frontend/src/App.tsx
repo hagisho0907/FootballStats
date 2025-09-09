@@ -1181,23 +1181,35 @@ const StatsPage = () => {
   );
 };
 
-const AIBuddyPage = () => (
+const AIBuddyPage = ({ onAgentSelect }) => {
+  return (
   <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
-    <h2 style={{ color: '#3C8DBC', marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>AIバディ</h2>
+    <h2 style={{ color: '#3C8DBC', marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>AIバディエージェント一覧</h2>
     
     {/* AI Agent Selection */}
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '30px' }}>
       
       {/* Personal Highlight Agent */}
-      <div style={{
+      <div 
+        onClick={() => onAgentSelect('highlight')}
+        style={{
         backgroundColor: '#031C32',
         borderRadius: '16px',
         padding: '20px',
         boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
         textAlign: 'center',
         cursor: 'pointer',
-        border: '2px solid transparent'
-      }}>
+        border: '2px solid transparent',
+        transition: 'transform 0.2s, box-shadow 0.2s'
+      }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-2px)';
+          e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.4)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+        }}>
         <div style={{
           width: '60px',
           height: '60px',
@@ -1223,15 +1235,26 @@ const AIBuddyPage = () => (
       </div>
 
       {/* Team Tactics Agent */}
-      <div style={{
+      <div 
+        onClick={() => onAgentSelect('tactics')}
+        style={{
         backgroundColor: '#031C32',
         borderRadius: '16px',
         padding: '20px',
         boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
         textAlign: 'center',
         cursor: 'pointer',
-        border: '2px solid transparent'
-      }}>
+        border: '2px solid transparent',
+        transition: 'transform 0.2s, box-shadow 0.2s'
+      }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-2px)';
+          e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.4)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+        }}>
         <div style={{
           width: '60px',
           height: '60px',
@@ -1257,15 +1280,26 @@ const AIBuddyPage = () => (
       </div>
 
       {/* Stats Agent */}
-      <div style={{
+      <div 
+        onClick={() => onAgentSelect('stats')}
+        style={{
         backgroundColor: '#031C32',
         borderRadius: '16px',
         padding: '20px',
         boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
         textAlign: 'center',
         cursor: 'pointer',
-        border: '2px solid transparent'
-      }}>
+        border: '2px solid transparent',
+        transition: 'transform 0.2s, box-shadow 0.2s'
+      }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-2px)';
+          e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.4)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+        }}>
         <div style={{
           width: '60px',
           height: '60px',
@@ -1291,15 +1325,26 @@ const AIBuddyPage = () => (
       </div>
 
       {/* Medical/Conditioning Agent */}
-      <div style={{
+      <div 
+        onClick={() => onAgentSelect('condition')}
+        style={{
         backgroundColor: '#031C32',
         borderRadius: '16px',
         padding: '20px',
         boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
         textAlign: 'center',
         cursor: 'pointer',
-        border: '2px solid transparent'
-      }}>
+        border: '2px solid transparent',
+        transition: 'transform 0.2s, box-shadow 0.2s'
+      }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-2px)';
+          e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.4)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+        }}>
         <div style={{
           width: '60px',
           height: '60px',
@@ -1326,7 +1371,231 @@ const AIBuddyPage = () => (
 
     </div>
   </div>
-);
+  );
+};
+
+// チャット画面のコンポーネント
+const ChatPage = ({ agentType, onBack }) => {
+  const [messages, setMessages] = useState([]);
+  const [inputMessage, setInputMessage] = useState('');
+  
+  const agentInfo = {
+    'highlight': { 
+      name: 'プレーハイライト AI', 
+      description: '個人プレー分析の専門家です',
+      avatar: '🏃‍♂️',
+      color: '#00385B'
+    },
+    'tactics': { 
+      name: 'チーム戦術 AI', 
+      description: '映像・戦術振り返りの専門家です',
+      avatar: '⚽',
+      color: '#026ACB'
+    },
+    'stats': { 
+      name: 'スタッツ分析 AI', 
+      description: 'データ振り返りの専門家です',
+      avatar: '📊',
+      color: '#24A0FF'
+    },
+    'condition': { 
+      name: 'コンディション AI', 
+      description: 'メディカルチェックの専門家です',
+      avatar: '🏥',
+      color: '#3C8DBC'
+    }
+  };
+
+  const currentAgent = agentInfo[agentType] || agentInfo['highlight'];
+
+  const sendMessage = () => {
+    if (inputMessage.trim()) {
+      setMessages([...messages, 
+        { type: 'user', text: inputMessage },
+        { type: 'agent', text: `${currentAgent.name}です。${inputMessage}について分析します。` }
+      ]);
+      setInputMessage('');
+    }
+  };
+
+  return (
+    <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
+      {/* ヘッダー */}
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        marginBottom: '20px',
+        paddingBottom: '16px',
+        borderBottom: '1px solid #031C32'
+      }}>
+        <button 
+          onClick={onBack}
+          style={{
+            backgroundColor: 'transparent',
+            border: 'none',
+            color: '#3C8DBC',
+            fontSize: '20px',
+            cursor: 'pointer',
+            marginRight: '16px'
+          }}
+        >←</button>
+        
+        {/* AIアバター */}
+        <div style={{
+          width: '50px',
+          height: '50px',
+          borderRadius: '50%',
+          backgroundColor: currentAgent.color,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '24px',
+          marginRight: '16px',
+          boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
+        }}>
+          <div style={{
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
+            backgroundColor: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '20px'
+          }}>
+            🤖
+          </div>
+        </div>
+        
+        <div>
+          <h2 style={{ 
+            color: '#FBF9FA', 
+            margin: '0 0 4px 0', 
+            fontSize: '18px', 
+            fontWeight: 'bold' 
+          }}>{currentAgent.name}</h2>
+          <p style={{ 
+            color: '#3C8DBC', 
+            margin: 0, 
+            fontSize: '14px' 
+          }}>{currentAgent.description}</p>
+        </div>
+      </div>
+
+      {/* チャットメッセージエリア */}
+      <div style={{
+        backgroundColor: '#031C32',
+        borderRadius: '16px',
+        padding: '20px',
+        marginBottom: '20px',
+        minHeight: '60vh',
+        maxHeight: '60vh',
+        overflowY: 'auto',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
+      }}>
+        {messages.length === 0 ? (
+          <div style={{ textAlign: 'center', color: '#3C8DBC', marginTop: '100px' }}>
+            <div style={{ fontSize: '48px', marginBottom: '16px' }}>💬</div>
+            <p>こんにちは！何について相談しますか？</p>
+          </div>
+        ) : (
+          messages.map((msg, index) => (
+            <div key={index} style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              marginBottom: '16px',
+              justifyContent: msg.type === 'user' ? 'flex-end' : 'flex-start'
+            }}>
+              {msg.type === 'agent' && (
+                <div style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  backgroundColor: currentAgent.color,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginRight: '12px',
+                  fontSize: '16px'
+                }}>🤖</div>
+              )}
+              
+              <div style={{
+                backgroundColor: msg.type === 'user' ? '#24A0FF' : '#00385B',
+                color: 'white',
+                padding: '12px 16px',
+                borderRadius: '16px',
+                maxWidth: '70%',
+                wordBreak: 'break-word'
+              }}>
+                {msg.text}
+              </div>
+              
+              {msg.type === 'user' && (
+                <div style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  backgroundColor: '#24A0FF',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginLeft: '12px',
+                  fontSize: '16px'
+                }}>👤</div>
+              )}
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* メッセージ入力エリア */}
+      <div style={{
+        display: 'flex',
+        gap: '12px',
+        alignItems: 'center',
+        backgroundColor: '#031C32',
+        borderRadius: '12px',
+        padding: '16px',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
+      }}>
+        <input
+          value={inputMessage}
+          onChange={(e) => setInputMessage(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+          placeholder="メッセージを入力..."
+          style={{
+            flex: 1,
+            padding: '12px 16px',
+            border: '1px solid #3C8DBC',
+            borderRadius: '24px',
+            fontSize: '14px',
+            backgroundColor: '#02070D',
+            color: '#FBF9FA',
+            outline: 'none'
+          }}
+        />
+        <button 
+          onClick={sendMessage}
+          style={{
+            backgroundColor: currentAgent.color,
+            color: 'white',
+            border: 'none',
+            borderRadius: '50%',
+            width: '44px',
+            height: '44px',
+            fontSize: '18px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+          ➤
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const SupportPage = () => (
   <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
@@ -1347,6 +1616,8 @@ const SupportPage = () => (
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [selectedAgent, setSelectedAgent] = useState(null);
+  const [showChat, setShowChat] = useState(false);
 
   const navigation = [
     { id: 'calendar', label: 'カレンダー', iconPath: '/icon/icon3.svg' },
@@ -1356,12 +1627,27 @@ function App() {
     { id: 'support', label: 'サポート', iconPath: '/icon/icon5.svg' }
   ];
 
+  const handleAgentSelect = (agentType) => {
+    setSelectedAgent(agentType);
+    setShowChat(true);
+  };
+
+  const handleBackFromChat = () => {
+    setShowChat(false);
+    setSelectedAgent(null);
+  };
+
   const renderPage = () => {
+    // チャット画面が開いている場合
+    if (showChat && selectedAgent) {
+      return <ChatPage agentType={selectedAgent} onBack={handleBackFromChat} />;
+    }
+    
     switch (currentPage) {
       case 'home': return <HomePage />;
       case 'calendar': return <CalendarPage />;
       case 'stats': return <StatsPage />;
-      case 'ai-buddy': return <AIBuddyPage />;
+      case 'ai-buddy': return <AIBuddyPage onAgentSelect={handleAgentSelect} />;
       case 'support': return <SupportPage />;
       default: return <HomePage />;
     }
