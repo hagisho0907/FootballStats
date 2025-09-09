@@ -95,22 +95,22 @@ const HomePage = () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
-              <img src="/icon/icon11.svg" alt="週の総活動時間" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
-              <span style={{ color: '#FBF9FA' }}>週間</span>
+              <img src="/icon/icon11.svg" alt="週の総出場時間" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
+              <span style={{ color: '#FBF9FA' }}>週の総出場時間</span>
             </span>
             <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>12 h</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
               <img src="/icon/icon9.svg" alt="総走行距離" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
-              <span style={{ color: '#FBF9FA' }}>移行サート</span>
+              <span style={{ color: '#FBF9FA' }}>総走行距離</span>
             </span>
             <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>35.2 km</span>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#3C8DBC' }}>
-              <img src="/icon/icon2.svg" alt="試合成績" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
-              <span style={{ color: '#FBF9FA' }}>試合スタッシ</span>
+              <img src="/icon/icon2.svg" alt="スタッツ" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
+              <span style={{ color: '#FBF9FA' }}>スタッツ</span>
             </span>
             <span style={{ fontWeight: 'bold', color: '#FBF9FA', fontSize: '16px' }}>2G / 1A</span>
           </div>
@@ -128,11 +128,11 @@ const HomePage = () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <img src="/icon/icon3.svg" alt="予定" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
-            <span style={{ color: '#FBF9FA' }}>9/10(火) 18:00 て〜</span>
+            <span style={{ color: '#FBF9FA' }}>9/9(火) 18:00 vs XYZFCユース</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <img src="/icon/icon3.svg" alt="予定" width="20" height="20" style={{ filter: 'invert(0.6) sepia(1) saturate(2) hue-rotate(180deg) brightness(1.2)' }} />
-            <span style={{ color: '#FBF9FA' }}>9/12(木) vs ○○高校</span>
+            <span style={{ color: '#FBF9FA' }}>9/12(金) 18:00 vs ABC高校</span>
           </div>
         </div>
       </div>
