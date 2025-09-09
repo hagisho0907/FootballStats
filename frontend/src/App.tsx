@@ -326,10 +326,14 @@ const StatsPage = () => (
   <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
     <h2 style={{ color: '#3C8DBC', marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>スタッツ</h2>
     
-    {/* Match Cards */}
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    {/* Match Cards - Vertical Layout */}
+    <div style={{ 
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '16px'
+    }}>
       
-      {/* Match 1 - Detailed */}
+      {/* Match 1 - Active with blue border */}
       <div style={{
         backgroundColor: '#031C32',
         borderRadius: '12px',
@@ -423,7 +427,7 @@ const StatsPage = () => (
         </div>
       </div>
 
-      {/* Match 2 - Simple */}
+      {/* Match 2 - Default border */}
       <div style={{
         backgroundColor: '#031C32',
         borderRadius: '12px',
@@ -431,22 +435,93 @@ const StatsPage = () => (
         padding: '20px',
         boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
       }}>
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
           <h3 style={{
-            margin: '0 0 20px 0',
+            margin: '0 0 8px 0',
             fontSize: '16px',
             fontWeight: 'bold',
             color: '#FBF9FA'
           }}>2025/9/1 VS 浅草FC</h3>
-          <div style={{
-            fontSize: '24px',
-            color: '#3C8DBC',
-            fontWeight: 'normal'
-          }}>同じもの</div>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '20px',
+          alignItems: 'center'
+        }}>
+          {/* Video Section */}
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              fontSize: '12px',
+              color: '#6b7280',
+              marginBottom: '8px',
+              fontWeight: 'bold'
+            }}>動画</div>
+            <div style={{
+              width: '80px',
+              height: '60px',
+              backgroundColor: '#4b5563',
+              borderRadius: '8px',
+              margin: '0 auto',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '24px'
+            }}>📹</div>
+          </div>
+
+          {/* Stats Section */}
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              fontSize: '12px',
+              color: '#6b7280',
+              marginBottom: '8px',
+              fontWeight: 'bold'
+            }}>スタッツ</div>
+            <div style={{
+              width: '80px',
+              height: '60px',
+              backgroundColor: '#e5e7eb',
+              borderRadius: '8px',
+              margin: '0 auto',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative'
+            }}>
+              {/* Mock Bar Chart */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'end',
+                gap: '4px',
+                height: '40px'
+              }}>
+                <div style={{
+                  width: '8px',
+                  height: '20px',
+                  backgroundColor: '#22c55e',
+                  borderRadius: '2px'
+                }}></div>
+                <div style={{
+                  width: '8px',
+                  height: '30px',
+                  backgroundColor: '#ef4444',
+                  borderRadius: '2px'
+                }}></div>
+                <div style={{
+                  width: '8px',
+                  height: '25px',
+                  backgroundColor: '#3b82f6',
+                  borderRadius: '2px'
+                }}></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Match 3 - Placeholder */}
+      {/* Match 3 - Subtle border */}
       <div style={{
         backgroundColor: '#031C32',
         borderRadius: '12px',
@@ -454,68 +529,92 @@ const StatsPage = () => (
         padding: '20px',
         boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
       }}>
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
           <h3 style={{
-            margin: '0 0 20px 0',
+            margin: '0 0 8px 0',
             fontSize: '16px',
             fontWeight: 'bold',
             color: '#3C8DBC'
           }}>2025/8/25 VS FC東京</h3>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '20px',
-            alignItems: 'center'
-          }}>
-            <div style={{ textAlign: 'center' }}>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '20px',
+          alignItems: 'center'
+        }}>
+          {/* Video Section */}
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              fontSize: '12px',
+              color: '#6b7280',
+              marginBottom: '8px',
+              fontWeight: 'bold'
+            }}>動画</div>
+            <div style={{
+              width: '80px',
+              height: '60px',
+              backgroundColor: '#00385B',
+              borderRadius: '8px',
+              margin: '0 auto',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '24px'
+            }}>📹</div>
+          </div>
+
+          {/* Stats Section */}
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              fontSize: '12px',
+              color: '#6b7280',
+              marginBottom: '8px',
+              fontWeight: 'bold'
+            }}>スタッツ</div>
+            <div style={{
+              width: '80px',
+              height: '60px',
+              backgroundColor: '#00385B',
+              borderRadius: '8px',
+              margin: '0 auto',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative'
+            }}>
+              {/* Mock Bar Chart */}
               <div style={{
-                width: '60px',
-                height: '45px',
-                backgroundColor: '#00385B',
-                borderRadius: '8px',
-                margin: '0 auto'
-              }}></div>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{
-                width: '60px',
-                height: '45px',
-                backgroundColor: '#00385B',
-                borderRadius: '8px',
-                margin: '0 auto'
-              }}></div>
+                display: 'flex',
+                alignItems: 'end',
+                gap: '4px',
+                height: '40px'
+              }}>
+                <div style={{
+                  width: '8px',
+                  height: '15px',
+                  backgroundColor: '#6b7280',
+                  borderRadius: '2px'
+                }}></div>
+                <div style={{
+                  width: '8px',
+                  height: '25px',
+                  backgroundColor: '#6b7280',
+                  borderRadius: '2px'
+                }}></div>
+                <div style={{
+                  width: '8px',
+                  height: '20px',
+                  backgroundColor: '#6b7280',
+                  borderRadius: '2px'
+                }}></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-    </div>
-
-    {/* Pagination Dots */}
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      gap: '12px',
-      marginTop: '30px'
-    }}>
-      <div style={{
-        width: '8px',
-        height: '8px',
-        borderRadius: '50%',
-        backgroundColor: '#1f2937'
-      }}></div>
-      <div style={{
-        width: '8px',
-        height: '8px',
-        borderRadius: '50%',
-        backgroundColor: '#d1d5db'
-      }}></div>
-      <div style={{
-        width: '8px',
-        height: '8px',
-        borderRadius: '50%',
-        backgroundColor: '#d1d5db'
-      }}></div>
     </div>
   </div>
 );
