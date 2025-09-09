@@ -1,7 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { TamaguiProvider } from '@tamagui/core';
-import { config } from './tamagui.config';
 import { Layout } from './components/common/Layout';
 import { HomePage } from './pages/HomePage';
 import { CalendarPage } from './pages/CalendarPage';
@@ -21,7 +19,7 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <TamaguiProvider config={config} defaultTheme="light">
+    <div style={{ fontFamily: 'Inter, system-ui, sans-serif' }}>
       <QueryClientProvider client={queryClient}>
         <Router>
           <Layout>
@@ -35,7 +33,7 @@ function App() {
           </Layout>
         </Router>
       </QueryClientProvider>
-    </TamaguiProvider>
+    </div>
   );
 }
 
