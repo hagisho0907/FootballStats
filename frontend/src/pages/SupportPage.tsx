@@ -18,9 +18,9 @@ export const SupportPage: React.FC = () => {
 
       <div style="flex-1 flex items-center justify-center p-4">
         <div style="text-center">
-          <div style="bg-yellow-50 border border-yellow-200 rounded-lg p-12">
-            <h2 style="text-4xl font-bold text-yellow-800 mb-4">開発中</h2>
-            <p style="text-yellow-700 text-lg">
+          <div style="bg-white border-4 border-red-500 rounded-lg p-12">
+            <h2 style="text-4xl font-bold text-red-600 mb-4">開発中</h2>
+            <p style="text-red-600 text-lg">
               このページは現在開発中です
             </p>
           </div>
