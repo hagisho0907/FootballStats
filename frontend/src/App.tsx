@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SupportPage } from './pages/SupportPage';
 
 // Simple page components
 const HomePage = () => (
@@ -2010,24 +2011,6 @@ const ChatPage = ({ agentType, onBack }) => {
   );
 };
 
-const SupportPage = () => (
-  <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
-    <h2 style={{ color: '#3C8DBC', marginBottom: '16px', fontSize: '24px', fontWeight: 'bold' }}>サポート</h2>
-    <div style={{
-      backgroundColor: 'rgba(239, 68, 68, 0.2)',
-      padding: '20px',
-      borderRadius: '8px',
-      border: '2px solid #ef4444',
-      marginBottom: '16px',
-      textAlign: 'center',
-      maxWidth: '300px',
-      margin: '0 auto'
-    }}>
-      <h3 style={{ color: '#dc2626', fontSize: '20px', fontWeight: 'bold', marginBottom: '8px' }}>開発中</h3>
-      <p style={{ color: '#dc2626', fontSize: '14px' }}>このページは現在開発中です</p>
-    </div>
-  </div>
-);
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
