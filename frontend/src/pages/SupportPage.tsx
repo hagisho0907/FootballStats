@@ -2,11 +2,11 @@ import React from 'react';
 
 export const SupportPage: React.FC = () => {
   return (
-    <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
+    <div style={{ backgroundColor: '#02070D', padding: '20px' }}>
       <h2 style={{ color: '#3C8DBC', marginBottom: '16px', fontSize: '24px', fontWeight: 'bold' }}>サポート</h2>
       <div style={{
         backgroundColor: '#FFFFFF',
-        padding: '48px',
+        padding: '24px',
         borderRadius: '12px',
         border: '4px solid #ef4444',
         marginBottom: '16px',
