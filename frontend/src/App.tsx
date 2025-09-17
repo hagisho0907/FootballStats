@@ -2014,15 +2014,17 @@ const SupportPage = () => (
   <div style={{ backgroundColor: '#02070D', minHeight: '100vh', padding: '20px' }}>
     <h2 style={{ color: '#3C8DBC', marginBottom: '16px', fontSize: '24px', fontWeight: 'bold' }}>サポート</h2>
     <div style={{
-      backgroundColor: '#FFFFFF',
-      padding: '48px',
-      borderRadius: '12px',
-      border: '4px solid #ef4444',
+      backgroundColor: 'rgba(239, 68, 68, 0.2)',
+      padding: '20px',
+      borderRadius: '8px',
+      border: '2px solid #ef4444',
       marginBottom: '16px',
-      textAlign: 'center'
+      textAlign: 'center',
+      maxWidth: '300px',
+      margin: '0 auto'
     }}>
-      <h3 style={{ color: '#dc2626', fontSize: '40px', fontWeight: 'bold', marginBottom: '16px' }}>開発中</h3>
-      <p style={{ color: '#dc2626', fontSize: '18px' }}>このページは現在開発中です</p>
+      <h3 style={{ color: '#dc2626', fontSize: '20px', fontWeight: 'bold', marginBottom: '8px' }}>開発中</h3>
+      <p style={{ color: '#dc2626', fontSize: '14px' }}>このページは現在開発中です</p>
     </div>
   </div>
 );
