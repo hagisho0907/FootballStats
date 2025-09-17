@@ -4,19 +4,19 @@ import { Settings } from 'lucide-react';
 export const SupportPage: React.FC = () => {
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div style={{ minHeight: '100vh', backgroundColor: '#f9fafb' }}>
       {/* Header */}
-      <div className="bg-gradient-to-r from-footballGreen to-footballGreen-dark text-white p-4">
-        <h1 className="text-xl font-bold flex items-center">
-          <Settings className="w-6 h-6 mr-2" />
+      <div style={{ background: 'linear-gradient(to right, #10b981, #059669)', color: 'white', padding: '1rem' }}>
+        <h1 style={{ fontSize: '1.25rem', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
+          <Settings style={{ width: '1.5rem', height: '1.5rem', marginRight: '0.5rem' }} />
           footballLOG
         </h1>
-        <p className="text-green-100 text-sm mt-1 opacity-90">
+        <p style={{ color: '#d1fae5', fontSize: '0.875rem', marginTop: '0.25rem', opacity: 0.9 }}>
           Support
         </p>
       </div>
 
-      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem', minHeight: 'calc(100vh - 80px)' }}>
         <div style={{ textAlign: 'center' }}>
           <div style={{ 
             backgroundColor: 'white', 
