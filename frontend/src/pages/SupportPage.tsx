@@ -16,11 +16,24 @@ export const SupportPage: React.FC = () => {
         </p>
       </div>
 
-      <div className="flex-1 flex items-center justify-center p-4">
-        <div className="text-center">
-          <div className="bg-white border-4 border-red-500 rounded-lg p-12">
-            <h2 className="text-4xl font-bold text-red-600 mb-4">開発中</h2>
-            <p className="text-red-600 text-lg">
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ 
+            backgroundColor: 'white', 
+            border: '4px solid #ef4444', 
+            borderRadius: '0.5rem', 
+            padding: '3rem' 
+          }}>
+            <h2 style={{ 
+              fontSize: '2.5rem', 
+              fontWeight: 'bold', 
+              color: '#dc2626', 
+              marginBottom: '1rem' 
+            }}>開発中</h2>
+            <p style={{ 
+              color: '#dc2626', 
+              fontSize: '1.125rem' 
+            }}>
               このページは現在開発中です
             </p>
           </div>
