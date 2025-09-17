@@ -84,20 +84,21 @@ export const SupportPage: React.FC = () => {
       
       {/* 開発中のメッセージ */}
       <div style={{
-        backgroundColor: '#FFFFFF',
-        padding: '16px',
-        borderRadius: '12px',
-        border: '4px solid #ef4444',
+        backgroundColor: 'rgba(239, 68, 68, 0.2)',
+        padding: '12px 16px',
+        borderRadius: '8px',
+        border: '2px solid #ef4444',
         marginBottom: '20px',
-        textAlign: 'center'
+        textAlign: 'center',
+        maxWidth: '250px',
+        margin: '0 auto 20px auto'
       }}>
-        <h3 style={{ color: '#dc2626', fontSize: '40px', fontWeight: 'bold', marginBottom: '8px' }}>開発中</h3>
-        <p style={{ color: '#dc2626', fontSize: '18px' }}>このページは現在開発中です</p>
+        <h3 style={{ color: '#dc2626', fontSize: '18px', fontWeight: 'bold', marginBottom: '4px' }}>開発中</h3>
+        <p style={{ color: '#dc2626', fontSize: '12px', margin: '0' }}>このページは現在開発中です</p>
       </div>
 
       {/* プロフィールセクション */}
       <div style={{ marginBottom: '20px' }}>
-        <h3 style={{ color: '#3C8DBC', marginBottom: '16px', fontSize: '20px', fontWeight: 'bold' }}>プロフィール</h3>
         
         {!profile ? (
           // プロフィール未作成時
@@ -125,8 +126,8 @@ export const SupportPage: React.FC = () => {
           // プロフィール表示（デジタルライセンス風）
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div style={{
-              width: '350px',
-              height: '220px',
+              width: '320px',
+              height: '200px',
               background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
               borderRadius: '16px',
               border: '3px solid #60a5fa',
@@ -138,33 +139,35 @@ export const SupportPage: React.FC = () => {
               <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                alignItems: 'center',
-                marginBottom: '12px'
+                alignItems: 'flex-start',
+                marginBottom: '8px'
               }}>
                 <div>
-                  <div style={{ color: 'white', fontSize: '24px', fontWeight: 'bold' }}>
+                  <div style={{ color: 'white', fontSize: '32px', fontWeight: 'bold', lineHeight: '1' }}>
                     {profile.jerseyNumber}
                   </div>
-                  <div style={{ color: '#bfdbfe', fontSize: '12px' }}>
+                  <div style={{ color: '#bfdbfe', fontSize: '14px', marginTop: '2px' }}>
                     {profile.position}
                   </div>
                 </div>
-                <div style={{ color: 'white', fontSize: '14px', fontWeight: 'bold' }}>
-                  DIGITAL LICENSE
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ color: 'white', fontSize: '12px', fontWeight: 'bold' }}>
+                    DIGITAL LICENSE
+                  </div>
                 </div>
-                <div style={{ fontSize: '20px' }}>
+                <div style={{ fontSize: '24px' }}>
                   {profile.nationality.split(' ')[0]}
                 </div>
               </div>
 
-              {/* チームロゴ */}
+              {/* チームロゴ - 中央配置 */}
               <div style={{
                 position: 'absolute',
                 left: '50%',
-                top: '45px',
-                transform: 'translateX(-50%)',
-                width: '80px',
-                height: '80px',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '70px',
+                height: '70px',
                 backgroundColor: 'white',
                 borderRadius: '50%',
                 display: 'flex',
@@ -177,21 +180,21 @@ export const SupportPage: React.FC = () => {
                     src={profile.teamLogo}
                     alt="Team Logo"
                     style={{
-                      width: '70px',
-                      height: '70px',
+                      width: '60px',
+                      height: '60px',
                       borderRadius: '50%',
                       objectFit: 'cover'
                     }}
                   />
                 ) : (
-                  <div style={{ fontSize: '24px', color: '#1e40af' }}>⚽</div>
+                  <div style={{ fontSize: '20px', color: '#1e40af' }}>⚽</div>
                 )}
               </div>
 
               {/* 名前とID */}
               <div style={{
                 position: 'absolute',
-                bottom: '20px',
+                bottom: '16px',
                 left: '16px',
                 right: '16px',
                 display: 'flex',
@@ -200,14 +203,14 @@ export const SupportPage: React.FC = () => {
               }}>
                 <div style={{
                   color: 'white',
-                  fontSize: '18px',
+                  fontSize: '20px',
                   fontWeight: 'bold'
                 }}>
                   {profile.name}
                 </div>
                 <div style={{
                   color: '#bfdbfe',
-                  fontSize: '12px'
+                  fontSize: '14px'
                 }}>
                   ID {profile.id}
                 </div>
@@ -217,7 +220,7 @@ export const SupportPage: React.FC = () => {
             <button
               onClick={handleUpdate}
               style={{
-                backgroundColor: '#059669',
+                backgroundColor: '#3C8DBC',
                 color: '#FBF9FA',
                 border: 'none',
                 borderRadius: '25px',
@@ -314,9 +317,11 @@ export const SupportPage: React.FC = () => {
                 <label style={{ display: 'block', marginBottom: '8px', color: '#FBF9FA', fontSize: '14px' }}>
                   ポジション:
                 </label>
-                <select
+                <input
+                  type="text"
                   value={formData.position}
                   onChange={(e) => setFormData({ ...formData, position: e.target.value })}
+                  placeholder="例: GK, DF, MF, FW"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -327,12 +332,7 @@ export const SupportPage: React.FC = () => {
                     color: '#02070D',
                     boxSizing: 'border-box'
                   }}
-                >
-                  <option value="">選択してください</option>
-                  {positions.map(pos => (
-                    <option key={pos} value={pos}>{pos}</option>
-                  ))}
-                </select>
+                />
               </div>
 
               <div>
@@ -498,9 +498,11 @@ export const SupportPage: React.FC = () => {
                 <label style={{ display: 'block', marginBottom: '8px', color: '#FBF9FA', fontSize: '14px' }}>
                   ポジション:
                 </label>
-                <select
+                <input
+                  type="text"
                   value={formData.position}
                   onChange={(e) => setFormData({ ...formData, position: e.target.value })}
+                  placeholder="例: GK, DF, MF, FW"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -511,12 +513,7 @@ export const SupportPage: React.FC = () => {
                     color: '#02070D',
                     boxSizing: 'border-box'
                   }}
-                >
-                  <option value="">選択してください</option>
-                  {positions.map(pos => (
-                    <option key={pos} value={pos}>{pos}</option>
-                  ))}
-                </select>
+                />
               </div>
 
               <div>
