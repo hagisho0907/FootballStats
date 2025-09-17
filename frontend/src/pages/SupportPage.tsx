@@ -217,22 +217,43 @@ export const SupportPage: React.FC = () => {
               </div>
             </div>
             
-            <button
-              onClick={handleUpdate}
-              style={{
-                backgroundColor: '#3C8DBC',
-                color: '#FBF9FA',
-                border: 'none',
-                borderRadius: '25px',
-                padding: '12px 30px',
-                fontSize: '16px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                marginTop: '20px'
-              }}
-            >
-              Update Profile
-            </button>
+            <div style={{ 
+              display: 'flex', 
+              gap: '16px', 
+              marginTop: '20px',
+              justifyContent: 'center' 
+            }}>
+              <button
+                onClick={handleUpdate}
+                style={{
+                  backgroundColor: '#3C8DBC',
+                  color: '#FBF9FA',
+                  border: 'none',
+                  borderRadius: '25px',
+                  padding: '12px 30px',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}
+              >
+                Update Profile
+              </button>
+              <button
+                onClick={() => {/* モックアップなので何もしない */}}
+                style={{
+                  backgroundColor: '#3C8DBC',
+                  color: '#FBF9FA',
+                  border: 'none',
+                  borderRadius: '25px',
+                  padding: '12px 30px',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer'
+                }}
+              >
+                Data Export
+              </button>
+            </div>
           </div>
         )}
       </div>
