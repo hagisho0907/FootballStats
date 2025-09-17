@@ -1,6 +1,6 @@
 {
-  "name": "Football Score",
-  "short_name": "Football Score",
+  "name": "NEO Soccer Note",
+  "short_name": "NEO Soccer Note",
   "description": "子供のサッカーのスタッツやサッカーノートを記録、管理するアプリ",
   "start_url": "/",
   "display": "standalone",
